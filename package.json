@@ -1,5 +1,6 @@
 {
 	"name": "portfolio",
+	"description": "Muhammad Fiaz's Portfolio Website using Astro and Tailwind CSS",
 	"type": "module",
 	"version": "3.0.0",
 	"scripts": {
