@@ -1,0 +1,33 @@
+---
+import loadingLaptop from '@src/assets/gif/loading-laptop.gif';
+---
+<head>
+  <link rel="preload" as="image" href={loadingLaptop.src ?? loadingLaptop} />
+</head>
+<div id="splash-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-zinc-900 transition-opacity duration-500">
+  <div class="text-center">
+    <img src={loadingLaptop.src ?? loadingLaptop} alt="Loading..." class="mx-auto mb-10 object-contain w-[440px] h-[440px]" width="440" height="440" />
+    <div class="text-3xl font-bold text-zinc-800 dark:text-zinc-100 flex items-center justify-center">
+      <span>Loading</span>
+      <span id="loading-dots" class="inline-block w-6 text-left">.</span>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  // Animate the dots in Loading... (cycle through 1, 2, 3 dots, then back to 1)
+  window.addEventListener('DOMContentLoaded', function() {
+    const dots = document.getElementById('loading-dots');
+    let count = 1;
+    setInterval(() => {
+      count = count < 3 ? count + 1 : 1;
+      if (dots) dots.textContent = '.'.repeat(count);
+    }, 400);
+    setTimeout(function() {
+      const splash = document.getElementById('splash-screen');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 500);
+      }
+    }, 600);
+  });
+</script>

@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 ---
 
-<div class='w-full md:flex md:items-center gap-16 mb-10 h-screen relative'>
+<section id="hero-section" class="w-full md:flex md:items-center gap-16 mb-10 h-screen relative opacity-0 translate-y-8 transition-all duration-1000">
 	<div
 		class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%+80px)] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 w-full px-4 max-w-full md:max-w-none'
 	>
@@ -19,15 +19,15 @@ import { Image } from 'astro:assets';
 				<div class='flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto'>
 					<a
 						href='mailto:contact@muhammadfiaz.com'
-						class='px-6 py-2 rounded-lg border-2 border-green-800 bg-green-100 text-green-900 font-semibold shadow-none hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white focus:animate-pulse transition-colors text-center w-full sm:w-auto'
+						class='px-6 py-2 rounded-full border-2 border-green-800 bg-green-100 text-green-900 font-semibold shadow-none hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white focus:animate-pulse transition-colors text-center w-full sm:w-auto'
 					>
-						Contact with Me
+						Contact Me
 					</a>
 					<a
 						href='https://pay.muhammadfiaz.com'
 						target='_blank'
 						rel='noopener'
-						class='px-6 py-2 rounded-lg border-2 border-yellow-700 bg-yellow-100 text-yellow-900 font-semibold shadow-none hover:bg-yellow-500 hover:text-white focus:bg-yellow-700 focus:text-white focus:animate-pulse transition-colors text-center w-full sm:w-auto'
+						class='px-6 py-2 rounded-full border-2 border-yellow-700 bg-yellow-100 text-yellow-900 font-semibold shadow-none hover:bg-yellow-500 hover:text-white focus:bg-yellow-700 focus:text-white focus:animate-pulse transition-colors text-center w-full sm:w-auto'
 					>
 						Buy me a Coffee
 					</a>
@@ -46,4 +46,29 @@ import { Image } from 'astro:assets';
 			</div>
 		</div>
 	</div>
-</div>
+</section>
+
+<script is:inline>
+window.addEventListener('DOMContentLoaded', () => {
+  // Wait for splash screen to be removed before animating hero
+  const hero = document.getElementById('hero-section');
+  function showHero() {
+    if (hero) {
+      hero.classList.remove('opacity-0', 'translate-y-8');
+      hero.classList.add('opacity-100', 'translate-y-0');
+    }
+  }
+  const splash = document.getElementById('splash-screen');
+  if (splash) {
+    const observer = new MutationObserver((mutations) => {
+      if (!document.getElementById('splash-screen')) {
+        showHero();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true });
+  } else {
+    showHero();
+  }
+});
+</script>
