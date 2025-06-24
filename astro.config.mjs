@@ -7,28 +7,29 @@ import robotsTxt from 'astro-robots-txt';
 import partytown from '@astrojs/partytown';
 
 import tailwindcss from '@tailwindcss/vite';
-import vercelServerless from '@astrojs/vercel';
+
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: vercelServerless(),
-	site: 'https://muhammadfiaz.com',
-	integrations: [mdx(), sitemap(), partytown(), robotsTxt()],
+  site: 'https://muhammadfiaz.com',
+  integrations: [mdx(), sitemap(), partytown(), robotsTxt()],
 
-	markdown: {
-		extendDefaultPlugins: true,
-		rehypePlugins: [
-			[
-				autoNewTabExternalLinks,
-				{
-					domain: 'muhammadfiaz.com'
-				}
-			]
-		]
+  markdown: {
+      extendDefaultPlugins: true,
+      rehypePlugins: [
+          [
+              autoNewTabExternalLinks,
+              {
+                  domain: 'muhammadfiaz.com'
+              }
+          ]
+      ]
 	},
 
-	vite: {
-		plugins: [tailwindcss()]
-	}
+  vite: {
+      plugins: [tailwindcss()]
+	},
+
+  adapter: netlify()
 });
