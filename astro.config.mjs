@@ -7,10 +7,12 @@ import robotsTxt from 'astro-robots-txt';
 import partytown from '@astrojs/partytown';
 
 import tailwindcss from '@tailwindcss/vite';
+import vercelStatic from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-	output: 'static',
+	  output: 'static',
+  adapter: vercelStatic(),
 	site: 'https://muhammadfiaz.com',
 	integrations: [mdx(), sitemap(), partytown(), robotsTxt()],
 
