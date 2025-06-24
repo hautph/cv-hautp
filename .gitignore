@@ -20,3 +20,5 @@ pnpm-debug.log*
 
 # JetBrains IDE settings
 .idea/
+
+.vercel/
