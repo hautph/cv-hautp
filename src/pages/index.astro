@@ -1,8 +1,6 @@
 ---
-export const prerender = true;
-
-const title = "Muhammad Fiaz | Full Stack Developer";
-const description = "Welcome to my portfolio! Discover my latest projects, skills, and professional journey as a full stack developer.";
+const title = 'Muhammad Fiaz | Full Stack Developer';
+const description = 'Welcome to my portfolio! Discover my latest projects, skills, and professional journey as a full stack developer.';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Experience from '../components/Experience.astro';
 // import RecentPosts from '../layouts/components/RecentPosts.astro';
@@ -13,45 +11,183 @@ import TechStack from '@src/components/TechStack.astro';
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="container mx-auto px-4">
-    <main class="flex flex-col gap-16">
-      <Hero />
-      <Experience />
-      <TechStack />
-      <!-- <RecentPosts /> -->
-      <RecentProjects />
-      <QNA />
-    </main>
-  </div>
+	<!-- Hero section - fixed and centered, full viewport -->
+	<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='0'>
+		<Hero />
+	</div>
+
+	<!-- Other sections - normal scroll flow -->
+	<div class='container mx-auto px-4'>
+		<main class='flex flex-col gap-16 relative z-10'>
+			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='200'>
+				<Experience />
+			</div>
+			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='400'>
+				<TechStack />
+			</div>
+			<!-- <RecentPosts /> -->
+			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='600'>
+				<RecentProjects />
+			</div>
+			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='800'>
+				<QNA />
+			</div>
+		</main>
+	</div>
 </BaseLayout>
 
 <script is:inline>
-  const text = 'I am a Full Stack Developer';
-  const el = document.getElementById('typing-animation');
-  let i = 0;
-  let forward = true;
-  let delay = 80;
-  function typeLoop() {
-    if (!el) return;
-    if (forward) {
-      el.textContent = text.slice(0, i);
-      if (i < text.length) {
-        i++;
-        setTimeout(typeLoop, delay);
-      } else {
-        forward = false;
-        setTimeout(typeLoop, 1200);
-      }
-    } else {
-      el.textContent = text.slice(0, i);
-      if (i > 0) {
-        i--;
-        setTimeout(typeLoop, 40);
-      } else {
-        forward = true;
-        setTimeout(typeLoop, 400);
-      }
-    }
-  }
-  typeLoop();
+	// Typing animation with smooth, slower timing
+	const text = 'I am a Full Stack Developer';
+	const el = document.getElementById('typing-animation');
+	let i = 0;
+	let forward = true;
+	let lastTime = 0;
+	const forwardDelay = 120; // Slower typing
+	const backwardDelay = 60; // Slower deletion
+
+	function typeLoop(currentTime) {
+		if (!el) return;
+
+		if (currentTime - lastTime >= (forward ? forwardDelay : backwardDelay)) {
+			if (forward) {
+				el.textContent = text.slice(0, i);
+				if (i < text.length) {
+					i++;
+					lastTime = currentTime;
+				} else {
+					forward = false;
+					lastTime = currentTime + 2000; // Longer pause at end
+				}
+			} else {
+				el.textContent = text.slice(0, i);
+				if (i > 0) {
+					i--;
+					lastTime = currentTime;
+				} else {
+					forward = true;
+					lastTime = currentTime + 800; // Longer pause at start
+				}
+			}
+		}
+
+		requestAnimationFrame(typeLoop);
+	}
+
+	requestAnimationFrame(typeLoop);
+
+	// Smooth, slow fade-in animations with gentle timing
+	document.addEventListener('DOMContentLoaded', () => {
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -50px 0px'
+		};
+
+		const sectionObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const delay = parseInt(entry.target.getAttribute('data-delay') || '0');
+
+					// Triple requestAnimationFrame for ultra-smooth start
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => {
+							requestAnimationFrame(() => {
+								setTimeout(() => {
+									// Very slow, gentle transition with smooth easing
+									entry.target.style.transition =
+										'opacity 1.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
+									entry.target.style.opacity = '1';
+									entry.target.style.transform = 'translateY(0px) scale(1)';
+
+									// Clean up will-change after animation completes
+									setTimeout(() => {
+										entry.target.style.willChange = 'auto';
+									}, 1800);
+								}, delay);
+							});
+						});
+					});
+
+					sectionObserver.unobserve(entry.target);
+				}
+			});
+		}, observerOptions);
+
+		// Gentle section preparation with subtle initial transforms
+		function prepareSections() {
+			const sections = document.querySelectorAll('.animate-section');
+
+			// Very gentle initial state for smooth fade-in
+			sections.forEach((section) => {
+				section.style.opacity = '0';
+				section.style.transform = 'translateY(24px) scale(0.98)';
+				section.style.willChange = 'opacity, transform';
+				section.style.backfaceVisibility = 'hidden';
+				section.style.perspective = '1000px';
+			});
+
+			// Smooth layout calculation
+			document.body.offsetHeight;
+		}
+
+		// Gentle animation start
+		function startSectionAnimations() {
+			prepareSections();
+
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					document.querySelectorAll('.animate-section').forEach((section) => {
+						sectionObserver.observe(section);
+					});
+				});
+			});
+		}
+
+		// Simplified splash screen detection
+		function isSplashScreenGone() {
+			const splash = document.getElementById('splash-screen');
+			if (!splash) return true;
+
+			const style = window.getComputedStyle(splash);
+			return style.display === 'none' || style.opacity === '0' || style.visibility === 'hidden' || splash.classList.contains('hidden');
+		}
+
+		// Patient splash screen waiting
+		function waitForSplashScreen() {
+			return new Promise((resolve) => {
+				if (isSplashScreenGone()) {
+					resolve();
+					return;
+				}
+
+				let resolved = false;
+
+				const checkInterval = setInterval(() => {
+					if (!resolved && isSplashScreenGone()) {
+						resolved = true;
+						clearInterval(checkInterval);
+						resolve();
+					}
+				}, 150); // Less frequent checks for gentler behavior
+
+				// Patient fallback timeout
+				setTimeout(() => {
+					if (!resolved) {
+						resolved = true;
+						clearInterval(checkInterval);
+						resolve();
+					}
+				}, 6000);
+			});
+		}
+
+		// Start animations with gentle, patient timing
+		waitForSplashScreen().then(() => {
+			requestAnimationFrame(() => {
+				setTimeout(() => {
+					startSectionAnimations();
+				}, 1000); // Longer initial delay for smooth transition
+			});
+		});
+	});
 </script>

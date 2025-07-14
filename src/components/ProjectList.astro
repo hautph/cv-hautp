@@ -1,101 +1,354 @@
 ---
-import { Image } from 'astro:assets';
-import type { Project } from '../pages/projects/projects'
-import { kFormatter } from '../utils'
-import GithubWhite from '@src/assets/img/github-mark-white.svg';
-import GithubBlack from '@src/assets/img/github-mark.svg';
+import type { Project } from '../lib/projects';
+import { kFormatter } from '../utils';
 
-const { projects } = Astro.props
+const { projects } = Astro.props;
 ---
-<div class="grid grid-cols-12 gap-5">
-  {
-    projects.map((project: Project, idx: number) => {
-      const tags = project.tags || [];
-      return (
-        <div class="col-span-12 sm:col-span-6 lg:col-span-4 border dark:border-zinc-700 rounded-xl shadow-2xs p-5 transition-all duration-300 opacity-0 translate-y-8 will-change-transform animate-fadeInUp" id={`project-card-${idx}`}> 
-          <script is:inline type="module">
-            window.toggleTags = window.toggleTags || function(idx) {
-              const el = document.getElementById(`expanded-tags-${idx}`);
-              if (el) el.classList.toggle('hidden');
-              const btn = document.getElementById(`show-less-btn-${idx}`);
-              if (btn) btn.classList.toggle('hidden');
-            };
-            window.toggleDesc = window.toggleDesc || function(idx) {
-              const el = document.getElementById(`desc-expanded-${idx}`);
-              if (el) {
-                el.classList.toggle('line-clamp-none');
-                el.classList.toggle('line-clamp-2');
-              }
-              const btn = document.getElementById(`desc-toggle-btn-${idx}`);
-              if (btn) btn.innerText = btn.innerText === 'Show more' ? 'Show less' : 'Show more';
-            };
-          </script>
-          <div class="flex items-center justify-between my-2">
-            <h3 class="font-semibold">
-              <a class="underline" href={project.demoLink} target="_blank" rel={project.demoLinkRel}>{project.name}</a>
-            </h3>
-            {(project.stargazers_count !== undefined || project.forks_count !== undefined) && (
-              <div class="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
-                {project.stargazers_count !== undefined && (
-                  <span class="flex items-center gap-1">
-                    <Image src={GithubBlack} height={12} width={12} class="dark:hidden" alt="Stars" loading="lazy" decoding="async" />
-                    <Image src={GithubWhite} height={12} width={12} class="hidden dark:block" alt="Stars" loading="lazy" decoding="async" />
-                    {kFormatter(project.stargazers_count)}
-                  </span>
-                )}
-                {project.forks_count !== undefined && (
-                  <span class="flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-label="Forks"><path d="M6 3v12a3 3 0 0 0 3 3h6"/><circle cx="6" cy="3" r="3"/><circle cx="18" cy="18" r="3"/></svg>
-                    {kFormatter(project.forks_count)}
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
-          <div class="flex flex-wrap gap-2 w-full mb-2">
-            {tags.slice(0, 3).map((tag: string) => (
-              <span
-                class='border border-zinc-300 dark:border-zinc-700 rounded-2xl text-sm text-zinc-700 dark:text-zinc-300 no-underline px-2 py-0.5 transition-all duration-700 hover:border-zinc-700 dark:hover:border-zinc-300'
-              >
-                {tag}
-              </span>
-            ))}
-            {tags.length > 3 && (
-              <span class="border border-zinc-300 dark:border-zinc-700 rounded-2xl text-sm text-zinc-700 dark:text-zinc-300 no-underline px-2 py-0.5 bg-zinc-50 dark:bg-zinc-800 cursor-pointer select-none" title={tags.slice(3).join(', ')}>
-                +{tags.length - 3} more
-              </span>
-            )}
-          </div>
-          <div class="text-zinc-600 dark:text-zinc-300 mb-4 min-h-[50px] transition-all duration-300">
-            <p>{project.description}</p>
-          </div>
-          <div class="flex justify-end gap-3 mt-4">
-            {
-              project.postLink &&
-              <a class="underline flex items-center gap-2" href={project.postLink}>
-                Article
-              </a>
-            }
-            {
-              project.demoLink &&
-              <a class="underline flex items-center gap-2" href={project.demoLink} target="_blank" rel={project.demoLinkRel}>
-                Demo
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-label="External link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              </a>
-            }
-          </div>
-        </div>
-      )
-    })
-  }
+
+<div class='grid grid-cols-12 gap-5'>
+	{
+		projects.map((project: Project, idx: number) => {
+			const tags = project.tags || [];
+			return (
+				<div
+					class='col-span-12 sm:col-span-6 lg:col-span-4 border dark:border-zinc-700 rounded-xl shadow-2xs p-5 project-card'
+					id={`project-card-${idx}`}
+					data-index={idx}>
+					<div class='flex items-center justify-between my-2'>
+						<h3 class='font-semibold'>
+							<a class='underline' href={project.demoLink} target='_blank' rel={project.demoLinkRel}>
+								{project.name}
+							</a>
+						</h3>
+						{(project.stargazers_count !== undefined || project.forks_count !== undefined) && (
+							<div class='flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400'>
+								{project.stargazers_count !== undefined && (
+									<span class='flex items-center gap-1'>
+										<img
+											src='/assets/img/github-mark.svg'
+											height='12'
+											width='12'
+											class='dark:hidden'
+											alt='Stars'
+											loading='lazy'
+											decoding='async'
+										/>
+										<img
+											src='/assets/img/github-mark-white.svg'
+											height='12'
+											width='12'
+											class='hidden dark:block'
+											alt='Stars'
+											loading='lazy'
+											decoding='async'
+										/>
+										{kFormatter(project.stargazers_count)}
+									</span>
+								)}
+								{project.forks_count !== undefined && (
+									<span class='flex items-center gap-1'>
+										<svg
+											xmlns='http://www.w3.org/2000/svg'
+											width='12'
+											height='12'
+											fill='none'
+											viewBox='0 0 24 24'
+											stroke='currentColor'
+											stroke-width='2'
+											aria-label='Forks'>
+											<path d='M6 3v12a3 3 0 0 0 3 3h6' />
+											<circle cx='6' cy='3' r='3' />
+											<circle cx='18' cy='18' r='3' />
+										</svg>
+										{kFormatter(project.forks_count)}
+									</span>
+								)}
+							</div>
+						)}
+					</div>
+					<div class='flex flex-wrap gap-2 w-full mb-2'>
+						{tags.slice(0, 3).map((tag: string) => (
+							<span class='border border-zinc-300 dark:border-zinc-700 rounded-2xl text-sm text-zinc-700 dark:text-zinc-300 no-underline px-2 py-0.5 transition-all duration-700 hover:border-zinc-700 dark:hover:border-zinc-300'>
+								{tag}
+							</span>
+						))}
+						{tags.length > 3 && (
+							<span
+								class='border border-zinc-300 dark:border-zinc-700 rounded-2xl text-sm text-zinc-700 dark:text-zinc-300 no-underline px-2 py-0.5 bg-zinc-50 dark:bg-zinc-800 cursor-pointer select-none'
+								title={tags.slice(3).join(', ')}>
+								+{tags.length - 3} more
+							</span>
+						)}
+					</div>
+					<div class='text-zinc-600 dark:text-zinc-300 mb-4 min-h-[50px] transition-all duration-300'>
+						<p>{project.description}</p>
+					</div>
+					<div class='flex justify-end gap-3 mt-4'>
+						{project.postLink && (
+							<a class='underline flex items-center gap-2' href={project.postLink}>
+								Article
+							</a>
+						)}
+						{project.demoLink && (
+							<a class='underline flex items-center gap-2' href={project.demoLink} target='_blank' rel={project.demoLinkRel}>
+								Demo
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									width='14'
+									height='14'
+									viewBox='0 0 24 24'
+									fill='none'
+									stroke='currentColor'
+									stroke-width='2'
+									stroke-linecap='round'
+									stroke-linejoin='round'
+									class='lucide lucide-external-link'
+									aria-label='External link'>
+									<path d='M15 3h6v6' />
+									<path d='M10 14 21 3' />
+									<path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
+								</svg>
+							</a>
+						)}
+					</div>
+				</div>
+			);
+		})
+	}
 </div>
-<script is:inline type="module">
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.animate-fadeInUp').forEach((el, i) => {
-      el.classList.remove('opacity-0', 'translate-y-8');
-      el.classList.add('opacity-100', 'translate-y-0');
-      el.style.transition = 'opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1)';
-      el.style.transitionDelay = `${i * 80}ms`;
-    });
-  });
+
+<style>
+	.project-card {
+		opacity: 0;
+		transform: translateY(20px);
+		/* Mobile Chrome optimizations */
+		-webkit-transform: translate3d(0, 20px, 0);
+		transform: translate3d(0, 20px, 0);
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		will-change: transform, opacity;
+		transition: all 0.6s ease-out;
+	}
+
+	/* Visible state for animations */
+	.project-card.visible {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+
+	/* Removed CSS animation delays - now handled by JavaScript for strict sequential order */
+
+	/* Hover effects */
+	.project-card:hover {
+		-webkit-transform: translate3d(0, -8px, 0) scale(1.02);
+		transform: translate3d(0, -8px, 0) scale(1.02);
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+		border-color: rgba(59, 130, 246, 0.3);
+	}
+
+	.dark .project-card:hover {
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+		border-color: rgba(59, 130, 246, 0.5);
+	}
+
+	/* Focus effects */
+	.project-card:focus-within {
+		-webkit-transform: translate3d(0, -4px, 0);
+		transform: translate3d(0, -4px, 0);
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+		border-color: rgba(59, 130, 246, 0.5);
+		outline: 2px solid rgba(59, 130, 246, 0.3);
+		outline-offset: 2px;
+	}
+
+	/* Link hover effects */
+	.project-card h3 a {
+		transition: color 0.3s ease;
+	}
+
+	.project-card:hover h3 a {
+		color: rgb(59, 130, 246);
+	}
+
+	.dark .project-card:hover h3 a {
+		color: rgb(147, 197, 253);
+	}
+
+	/* Tag hover effects */
+	.project-card .tag {
+		transition: all 0.3s ease;
+	}
+
+	.project-card:hover .tag {
+		-webkit-transform: translate3d(0, -1px, 0);
+		transform: translate3d(0, -1px, 0);
+		border-color: rgba(59, 130, 246, 0.3);
+		background-color: rgba(59, 130, 246, 0.05);
+	}
+
+	.dark .project-card:hover .tag {
+		border-color: rgba(147, 197, 253, 0.3);
+		background-color: rgba(59, 130, 246, 0.1);
+	}
+
+	/* Mobile Chrome fallback */
+	@media (max-width: 768px) {
+		.project-card {
+			transition: all 0.4s ease-out;
+		}
+		
+		/* Force visibility on mobile if animations fail */
+		.mobile-fallback .project-card {
+			opacity: 1 !important;
+			-webkit-transform: translate3d(0, 0, 0) !important;
+			transform: translate3d(0, 0, 0) !important;
+		}
+	}
+
+	/* No-JS fallback */
+	.no-js .project-card {
+		opacity: 1 !important;
+		-webkit-transform: translate3d(0, 0, 0) !important;
+		transform: translate3d(0, 0, 0) !important;
+	}
+</style>
+
+<script>
+	// Mobile Chrome domain-specific fix for muhammadfiaz.com
+	(function() {
+		'use strict';
+		
+		// Detect mobile Chrome
+		const isMobileChrome = /Chrome/.test(navigator.userAgent) && /Mobile/.test(navigator.userAgent);
+		const isMuhammadFiazDomain = window.location.hostname.includes('muhammadfiaz.com');
+		
+		// Add no-js class removal
+		document.documentElement.classList.remove('no-js');
+		
+		// Mobile Chrome specific handling
+		if (isMobileChrome && isMuhammadFiazDomain) {
+			// Add mobile fallback class after short delay
+			setTimeout(() => {
+				document.documentElement.classList.add('mobile-fallback');
+			}, 500);
+		}
+		
+		function initializeAnimations() {
+			const cards = document.querySelectorAll('.project-card');
+			if (!cards.length) return;
+			
+			let hasStartedAnimation = false;
+			
+			// Sequential animation function that respects order
+			function animateCardsInSequence() {
+				if (hasStartedAnimation) return;
+				hasStartedAnimation = true;
+				
+				// Sort cards by their data-index to ensure correct order
+				const sortedCards = Array.from(cards).sort((a, b) => {
+					const indexA = parseInt(a.getAttribute('data-index') || '0');
+					const indexB = parseInt(b.getAttribute('data-index') || '0');
+					return indexA - indexB;
+				});
+				
+				// Animate cards sequentially with proper delays
+				sortedCards.forEach((card, index) => {
+					setTimeout(() => {
+						card.classList.add('visible');
+					}, index * 150); // 150ms stagger between each card
+				});
+			}
+			
+			// Create intersection observer to detect when section comes into view
+			let observer: IntersectionObserver | null = null;
+			try {
+				observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+							animateCardsInSequence();
+							if (observer) {
+								observer.unobserve(entry.target);
+							}
+						}
+					});
+				}, {
+					threshold: 0.1,
+					rootMargin: '0px 0px -50px 0px'
+				}) as IntersectionObserver;
+				
+				// Observe the container instead of individual cards
+				const container = cards[0]?.parentElement;
+				if (container && observer) {
+					observer.observe(container);
+				}
+			} catch (e) {
+				// Fallback: animate immediately
+				animateCardsInSequence();
+				return;
+			}
+			
+			// Check if cards are already in viewport
+			const viewportHeight = window.innerHeight;
+			const firstCard = cards[0];
+			if (firstCard) {
+				try {
+					const rect = firstCard.getBoundingClientRect();
+					// If first card is already visible, start animation immediately
+					if (rect.top < viewportHeight * 0.8) {
+						animateCardsInSequence();
+					}
+				} catch (e) {
+					// Fallback: animate immediately
+					animateCardsInSequence();
+				}
+			}
+			
+			// Mobile Chrome domain-specific fallback
+			if (isMobileChrome && isMuhammadFiazDomain) {
+				setTimeout(() => {
+					if (!hasStartedAnimation) {
+						animateCardsInSequence();
+					}
+				}, 1000);
+			} else {
+				// Standard fallback for other browsers
+				setTimeout(() => {
+					if (!hasStartedAnimation) {
+						animateCardsInSequence();
+					}
+				}, 2000);
+			}
+		}
+		
+		// Multiple initialization strategies
+		function safeInitialize() {
+			try {
+				initializeAnimations();
+			} catch (e) {
+				// Emergency fallback: force all cards visible
+				const cards = document.querySelectorAll('.project-card');
+				cards.forEach(card => card.classList.add('visible'));
+			}
+		}
+		
+		// Initialize when DOM is ready
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', safeInitialize);
+		} else {
+			safeInitialize();
+		}
+		
+		// Additional mobile Chrome domain-specific initialization
+		if (isMobileChrome && isMuhammadFiazDomain) {
+			setTimeout(safeInitialize, 100);
+			setTimeout(safeInitialize, 500);
+		}
+		
+		// Window load fallback
+		window.addEventListener('load', () => {
+			setTimeout(safeInitialize, 100);
+		});
+		
+	})();
 </script>
