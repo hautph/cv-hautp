@@ -1,0 +1,132 @@
+---
+---
+
+<canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+<style>
+	#particle-canvas {
+		opacity: 0.3;
+	}
+	
+	.dark #particle-canvas {
+		opacity: 0.1;
+	}
+</style>
+
+<script is:inline>
+	// Particle background effect
+	(function() {
+		const canvas = document.getElementById('particle-canvas');
+		if (!canvas) return;
+		
+		const ctx = canvas.getContext('2d');
+		let particles = [];
+		let mouseX = 0;
+		let mouseY = 0;
+		let mouseRadius = 100;
+		
+		// Set canvas size
+		function resizeCanvas() {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+		}
+		
+		// Particle class
+		class Particle {
+			constructor() {
+				this.x = Math.random() * canvas.width;
+				this.y = Math.random() * canvas.height;
+				this.size = Math.random() * 2 + 0.5;
+				this.speedX = Math.random() * 1 - 0.5;
+				this.speedY = Math.random() * 1 - 0.5;
+				this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+			}
+			
+			update() {
+				this.x += this.speedX;
+				this.y += this.speedY;
+				
+				// Mouse interaction
+				const dx = mouseX - this.x;
+				const dy = mouseY - this.y;
+				const distance = Math.sqrt(dx * dx + dy * dy);
+				
+				if (distance < mouseRadius) {
+					const force = (mouseRadius - distance) / mouseRadius;
+					this.speedX += dx * force * 0.05;
+					this.speedY += dy * force * 0.05;
+				}
+				
+				// Boundary check
+				if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+				if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+				
+				// Slow down over time
+				this.speedX *= 0.99;
+				this.speedY *= 0.99;
+			}
+			
+			draw() {
+				ctx.fillStyle = this.color;
+				ctx.beginPath();
+				ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+				ctx.fill();
+			}
+		}
+		
+		// Create particles
+		function initParticles() {
+			particles = [];
+			const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 5000), 100);
+			
+			for (let i = 0; i < particleCount; i++) {
+				particles.push(new Particle());
+			}
+		}
+		
+		// Animation loop
+		function animate() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			
+			// Draw connections between particles
+			for (let i = 0; i < particles.length; i++) {
+				for (let j = i; j < particles.length; j++) {
+					const dx = particles[i].x - particles[j].x;
+					const dy = particles[i].y - particles[j].y;
+					const distance = Math.sqrt(dx * dx + dy * dy);
+					
+					if (distance < 100) {
+						const opacity = 1 - distance / 100;
+						ctx.strokeStyle = `rgba(100, 100, 255, ${opacity * 0.2})`;
+						ctx.lineWidth = 0.5;
+						ctx.beginPath();
+						ctx.moveTo(particles[i].x, particles[i].y);
+						ctx.lineTo(particles[j].x, particles[j].y);
+						ctx.stroke();
+					}
+				}
+				
+				particles[i].update();
+				particles[i].draw();
+			}
+			
+			requestAnimationFrame(animate);
+		}
+		
+		// Mouse move event
+		window.addEventListener('mousemove', (e) => {
+			mouseX = e.x;
+			mouseY = e.y;
+		});
+		
+		// Initialize
+		window.addEventListener('resize', () => {
+			resizeCanvas();
+			initParticles();
+		});
+		
+		resizeCanvas();
+		initParticles();
+		animate();
+	})();
+</script>

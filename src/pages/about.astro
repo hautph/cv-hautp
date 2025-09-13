@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TechnicalExpertise from '../components/TechnicalExpertise.astro';
 ---
 
-<BaseLayout title='About Me' description='About Tran Phuc Hau - Full Stack Developer, AI/ML Enthusiast, Open Source Contributor'>
+<BaseLayout title='About Me' description='About Tran Phuc Hau - Technical Manager, AI/ML Enthusiast, Open Source Contributor'>
 	<div class='container'>
 		<main class='prose text-lg dark:prose-invert'>
 			<article>
 				<div class='flex flex-col md:flex-row gap-6 items-center mb-2'>
 					<img
-						src='https://avatars.githubusercontent.com/u/75434191?v=4'
+						src='/cv/hautp.jpg'
 						alt='Tran Phuc Hau'
 						width='160'
 						height='160'
@@ -17,32 +18,240 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						decoding='async'
 					/>
 					<div>
-						<h1 class='text-3xl font-bold mb-2'>A Brief Introduction: Who Am I?</h1>
-						<p>
-							I've been passionate about coding since I was a child. I fell in love with programming at a young age, spending countless
-							hours learning, experimenting, and creating small projects. Over the years, this passion has grown into a career as a <strong
-								>Full Stack developer</strong
-							>, where I continue to build innovative solutions that solve real-world problems.
-						</p>
-						<p>
-							As I’ve evolved in my career, I’ve expanded my expertise into new areas like <strong>Machine Learning (ML)</strong> and <strong
-								>Artificial Intelligence (AI)</strong
-							>, diving deep into neural networks and other cutting-edge technologies. But no matter how much I learn, I always keep that
-							same excitement and curiosity I had as a child, exploring new fields and technologies that push the boundaries of what’s
-							possible.
-						</p>
-						<p>
-							Today, I’m not just focused on building apps and websites; I’m also exploring <strong>DevOps tools</strong> like Docker, Kubernetes,
-							and AWS to optimize and scale my projects. I believe in continuous learning and growth, and I’m always looking for new challenges
-							that help me expand my skills.
-						</p>
-						<p>
-							If you’re interested in collaborating on something exciting or need help with a project, feel free to reach out. Let’s create
-							something amazing together!
+						<h1 class='text-3xl font-bold mb-2 text-zinc-900 dark:text-zinc-100'>A Brief Introduction: Who Am I?</h1>
+						<p class='text-zinc-700 dark:text-zinc-300'>
+							I'm Tran Phuc Hau, a Technical Manager with experience building SaaS and enterprise-level products. I enjoy collaborating on projects as a Technical Manager. I love building user-friendly interfaces and working with modern web technologies.
 						</p>
 					</div>
 				</div>
 			</article>
+			
+			<!-- CV Section -->
+			<div class='mt-8'>
+				<h2 class='text-2xl font-bold mb-4 text-zinc-900 dark:text-zinc-100'>Curriculum Vitae</h2>
+				
+				<!-- View Buttons -->
+				<div class="flex flex-wrap gap-4 mb-6">
+					<button id="view-english-btn" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 dark:bg-blue-700 dark:hover:bg-blue-800" onclick="showPasswordModal('view', 'english')">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+							<path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+						</svg>
+						View CV (English)
+					</button>
+					<button id="view-vietnamese-btn" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 dark:bg-blue-700 dark:hover:bg-blue-800" onclick="showPasswordModal('view', 'vietnamese')">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+							<path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+						</svg>
+						View CV (Vietnamese)
+					</button>
+				</div>
+				
+				<!-- CV Content (Hidden by default) -->
+				<div id='cv-content' class='hidden min-h-[500px]'>
+					<!-- Close Button -->
+					<div class="flex justify-end mb-4">
+						<button id="close-cv" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 dark:bg-gray-800 dark:text-zinc-200 dark:border-gray-600 dark:hover:bg-gray-700" onclick="closeCV()">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+							</svg>
+							Close
+						</button>
+					</div>
+					
+					<!-- English CV -->
+					<div id='cv-english' class='cv-content-item hidden'>
+						<iframe 
+							src='/cv/CV-English.pdf' 
+							class='w-full h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg'
+							title='English CV'
+						></iframe>
+					</div>
+					
+					<!-- Vietnamese CV -->
+					<div id='cv-vietnamese' class='cv-content-item hidden'>
+						<iframe 
+							src='/cv/CV-Vietnamese.pdf' 
+							class='w-full h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg'
+							title='Vietnamese CV'
+						></iframe>
+					</div>
+				</div>
+				
+				<!-- Download Buttons -->
+				<div class="flex flex-wrap gap-4 mt-6">
+					<button class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 dark:bg-blue-700 dark:hover:bg-blue-800" onclick="showPasswordModal('download', 'english')">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						Download CV (English)
+					</button>
+					<button class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 dark:bg-blue-700 dark:hover:bg-blue-800" onclick="showPasswordModal('download', 'vietnamese')">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						Download CV (Vietnamese)
+					</button>
+				</div>
+			</div>
 		</main>
+        <TechnicalExpertise />
+	</div>
+	
+	<!-- Password Modal -->
+	<div id="password-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+		<div class="bg-white dark:bg-zinc-800 rounded-lg p-6 w-full max-w-md mx-4">
+			<h3 class="text-xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">Enter Password to Access CV</h3>
+			<p class="text-zinc-700 dark:text-zinc-300 mb-4">Please enter the password to view or download the CV.</p>
+			<input 
+				type="password" 
+				id="cv-password" 
+				class="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 mb-4"
+				placeholder="Enter password"
+			>
+			<div id="password-error" class="text-red-500 text-sm mb-4 hidden">Incorrect password. Please try again.</div>
+			<div class="flex justify-end gap-3">
+				<button 
+					class="px-4 py-2 border border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors duration-300"
+					onclick="closePasswordModal()"
+				>
+					Cancel
+				</button>
+				<button 
+					class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
+					onclick="validatePassword()"
+				>
+					Submit
+				</button>
+			</div>
+		</div>
 	</div>
 </BaseLayout>
+
+<style>
+	.cv-content-item.hidden {
+		display: none;
+	}
+	
+	.cv-content-item {
+		animation: fadeIn 0.3s ease-in-out;
+	}
+	
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+	
+	/* Password Modal Animation */
+	#password-modal {
+		animation: fadeIn 0.3s ease-out;
+	}
+</style>
+
+<script is:inline>
+	let currentAction = '';
+	let currentLanguage = '';
+	
+	function showPasswordModal(action, language) {
+		currentAction = action;
+		currentLanguage = language;
+		document.getElementById('password-modal').classList.remove('hidden');
+		document.getElementById('cv-password').focus();
+	}
+	
+	function closePasswordModal() {
+		document.getElementById('password-modal').classList.add('hidden');
+		document.getElementById('cv-password').value = '';
+		document.getElementById('password-error').classList.add('hidden');
+	}
+	
+	function validatePassword() {
+		const password = document.getElementById('cv-password').value;
+		const errorElement = document.getElementById('password-error');
+		
+		// Check if password is correct (247Express)
+		if (password === '247Express') {
+			closePasswordModal();
+			
+			if (currentAction === 'view') {
+				showCV(currentLanguage);
+			} else if (currentAction === 'download') {
+				downloadCV(currentLanguage);
+			}
+		} else {
+			errorElement.classList.remove('hidden');
+			document.getElementById('cv-password').value = '';
+			document.getElementById('cv-password').focus();
+		}
+	}
+	
+	function showCV(language) {
+		// Hide all CV content items
+		document.querySelectorAll('.cv-content-item').forEach(item => {
+			item.classList.add('hidden');
+		});
+		
+		// Show the main CV content container
+		const cvContent = document.getElementById('cv-content');
+		if (cvContent) {
+			cvContent.classList.remove('hidden');
+		}
+		
+		// Show the selected CV
+		const selectedCV = document.getElementById(`cv-${language}`);
+		if (selectedCV) {
+			selectedCV.classList.remove('hidden');
+		}
+		
+		// Scroll to CV content
+		if (cvContent) {
+			cvContent.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+	
+	function downloadCV(language) {
+		const link = document.createElement('a');
+		if (language === 'english') {
+			link.href = '/cv/CV-English.pdf';
+			link.download = 'CV-English.pdf';
+		} else {
+			link.href = '/cv/CV-Vietnamese.pdf';
+			link.download = 'CV-Vietnamese.pdf';
+		}
+		link.click();
+	}
+	
+	function closeCV() {
+		// Hide the main CV content container
+		const cvContent = document.getElementById('cv-content');
+		if (cvContent) {
+			cvContent.classList.add('hidden');
+		}
+		
+		// Hide all CV content items
+		document.querySelectorAll('.cv-content-item').forEach(item => {
+			item.classList.add('hidden');
+		});
+		
+		// Scroll to top of CV section
+		const cvSection = document.querySelector('main .mt-8');
+		if (cvSection) {
+			cvSection.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+	
+	// Allow Enter key to submit password
+	document.getElementById('cv-password').addEventListener('keypress', function(event) {
+		if (event.key === 'Enter') {
+			validatePassword();
+		}
+	});
+	
+	// Close modal when clicking outside
+	document.getElementById('password-modal').addEventListener('click', function(event) {
+		if (event.target === this) {
+			closePasswordModal();
+		}
+	});
+</script>

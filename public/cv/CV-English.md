@@ -1,5 +1,5 @@
 # TRAN PHUC HAU  
-**IT Infrastructure Specialist & Security Engineer**  
+**Technical Manager**  
 
 hautph@gmail.com  | 0983078990  
 Ho Chi Minh City  | [linkedin.com/in/hautph](https://linkedin.com/in/hautph) | [github.com/hautph](https://github.com/hautph)

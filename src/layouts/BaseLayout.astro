@@ -2,7 +2,9 @@
 import BaseHead from './components/BaseHead.astro';
 import Header from './components/Header.astro';
 import Footer from './components/Footer.astro';
+import ScrollToTopButton from '../components/ScrollToTopButton.astro';
 import SplashScreen from '../components/SplashScreen.astro';
+import ParticleBackground from '../components/ParticleBackground.astro';
 import { loadEnv } from 'vite';
 
 const { GTAG_MEASUREMENT_ID } = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), '');
@@ -49,11 +51,13 @@ const { title, description, image } = Astro.props;
 			document.body.classList.add('visible');
 		</script>
 		<SplashScreen />
+		<ParticleBackground />
 		<Header />
-		<div class='py-8 min-h-[calc(100vh-160px)]'>
+		<div class='py-8 min-h-[calc(100vh-160px)] relative z-10'>
 			<slot />
 		</div>
 		<Footer />
+		<ScrollToTopButton />
 		<!-- Google tag (gtag.js) -->
 		{
 			GTAG_MEASUREMENT_ID && (

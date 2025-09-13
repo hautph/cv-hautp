@@ -1,5 +1,5 @@
 # TRẦN PHÚC HẬU  
-**Chuyên gia Hạ tầng CNTT & Kỹ sư Bảo mật**  
+**Quản lý kỹ thuật**  
 
 hautph@gmail.com  | 0983078990  
 TP. Hồ Chí Minh  | [linkedin.com/in/hautph](https://linkedin.com/in/hautph) | [github.com/hautph](https://github.com/hautph)

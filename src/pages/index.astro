@@ -1,13 +1,13 @@
 ---
-const title = 'Tran Phuc Hau | Full Stack Developer';
-const description = 'Welcome to my portfolio! Discover my latest projects, skills, and professional journey as a full stack developer.';
+const title = 'Tran Phuc Hau | Technical Manager';
+const description = 'Welcome to my portfolio! Discover my latest projects, skills, and professional journey as a Technical Manager.';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Experience from '../components/Experience.astro';
 // import RecentPosts from '../layouts/components/RecentPosts.astro';
-import QNA from '../components/QNA.astro';
+
 import RecentProjects from '../components/RecentProjects.astro';
 import Hero from '../components/Hero.astro';
-import TechStack from '@src/components/TechStack.astro';
+
 ---
 
 <BaseLayout title={title} description={description}>
@@ -22,16 +22,12 @@ import TechStack from '@src/components/TechStack.astro';
 			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='200'>
 				<Experience />
 			</div>
-			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='400'>
-				<TechStack />
-			</div>
+			
 			<!-- <RecentPosts /> -->
 			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='600'>
 				<RecentProjects />
 			</div>
-			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='800'>
-				<QNA />
-			</div>
+			
 		</main>
 	</div>
 </BaseLayout>

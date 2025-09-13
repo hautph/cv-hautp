@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+
 import { autoNewTabExternalLinks } from './src/autoNewTabExternalLinks';
 import robotsTxt from 'astro-robots-txt';
 import partytown from '@astrojs/partytown';
@@ -26,7 +26,7 @@ const getAdapter = () => {
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://cv.cungnhauhoc.net',
-	integrations: [mdx(), sitemap(), partytown(), robotsTxt()],
+	integrations: [mdx(), partytown(), robotsTxt()],
 
 	markdown: {
 		extendDefaultPlugins: true,

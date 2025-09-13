@@ -7,139 +7,151 @@ const menu = [
 		label: 'About'
 	},
 	{
-		link: '/posts/',
-		label: 'Posts'
+		link: '/blog/',
+		label: 'Blog'
 	},
 	{
 		link: '/projects/',
 		label: 'Projects'
-	},
-	{
-		link: '/tags/',
-		label: 'Tags'
 	}
 ];
 ---
 
-<header id='site-header' class:list={['flex items-center w-full transition duration-300 z-999 border-(--soft-border-color)']}>
-	<div class='container'>
-		<nav class='flex gap-4 items-center justify-between py-1'>
+<header id='site-header' class='flex items-center w-full transition-all duration-500 z-50 border-(--soft-border-color) backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 sticky top-0 shadow-sm'>
+	<div class='container mx-auto px-4'>
+		<nav class='flex gap-4 items-center justify-between py-3'>
+			<!-- Logo/Name -->
 			<h2 class='m-0'>
-				<a href='/' class='flex gap-4 items-center text-xl font-black uppercase'> Tran Phuc Hau </a>
+				<a href='/' class='flex gap-3 items-center text-xl font-bold tracking-tight transition-all duration-300 group'> 
+					<span class='bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-blue-500 transition-all duration-500'>Tran Phuc Hau</span>
+				</a>
 			</h2>
-			<div class='flex'>
-				<a class='p-3 dark:hidden' href='https://github.com/hautph' target='_blank'>
-					<img src='/assets/img/github-mark.svg' width='24' height='24' alt='Github logo' loading='lazy' decoding='async' />
-				</a>
-				<a class='p-3 hidden dark:block' href='https://github.com/hautph' target='_blank'>
-					<img src='/assets/img/github-mark-white.svg' width='24' height='24' alt='Github logo' loading='lazy' decoding='async' />
-				</a>
-				<a class='p-3' href='https://www.linkedin.com/in/hautph' target='_blank' aria-label='LinkedIn'>
-					<svg width='24' height='24' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'
-						><path
-							d='M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z'
-						></path></svg
+			
+			<!-- Mobile menu button -->
+			<button id='menu-toggle' class='p-2 lg:hidden hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' aria-label='Toggle menu'>
+				<svg
+					xmlns='http://www.w3.org/2000/svg'
+					class='icon icon-tabler icon-tabler-menu-2 w-6 h-6 text-zinc-700 dark:text-zinc-300'
+					width='24'
+					height='24'
+					viewBox='0 0 24 24'
+					stroke-width='2'
+					stroke='currentColor'
+					fill='none'
+					stroke-linecap='round'
+					stroke-linejoin='round'
+				>
+					<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+					<path d='M4 6l16 0'></path>
+					<path d='M4 12l16 0'></path>
+					<path d='M4 18l16 0'></path>
+				</svg>
+			</button>
+			
+			<!-- Desktop Navigation -->
+			<ul class='hidden lg:flex items-center gap-8'>
+				{
+					menu.map((item) => (
+						<li>
+							<HeaderLink href={item.link} class='text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:bg-blue-50/50 dark:hover:bg-zinc-800/50 relative'>
+								{item.label}
+								<span class='absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full'></span>
+							</HeaderLink>
+						</li>
+					))
+				}
+			</ul>
+			
+			<!-- Social Icons & Theme Toggle -->
+			<div class='flex items-center gap-1'>
+				<button id='themeToggle' class='p-2 hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' aria-label='Toggle theme'>
+					<svg
+						xmlns='http://www.w3.org/2000/svg'
+						class='sun w-5 h-5 text-zinc-700 dark:text-zinc-300'
+						width='24'
+						height='24'
+						viewBox='0 0 24 24'
+						stroke-width='2'
+						stroke='currentColor'
+						fill='none'
+						stroke-linecap='round'
+						stroke-linejoin='round'
 					>
-				</a>
-				<a class='p-3' href='https://twitter.com/hautph' target='_blank' aria-label='Twitter'>
-					<svg width='24' height='24' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'
-						><path
-							d='M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482c-4.086-.205-7.713-2.164-10.141-5.144a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417a9.867 9.867 0 0 1-6.102 2.104c-.396 0-.787-.023-1.175-.069a13.945 13.945 0 0 0 7.548 2.212c9.057 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636a10.012 10.012 0 0 0 2.457-2.548z'
-						></path></svg
+						<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+						<circle cx='12' cy='12' r='4'></circle>
+						<path
+							d='M3 12h1m8 -9v1m8 0h1m-9 8v1m-6.4 -12.4l-.7 .7m12.1 -.7l.7 .7m-9.4 7.1l-.7 .7m12.1 -.7l.7 .7'
+						></path>
+					</svg>
+					<svg
+						xmlns='http://www.w3.org/2000/svg'
+						class='moon w-5 h-5 text-zinc-700 dark:text-zinc-300 hidden'
+						width='24'
+						height='24'
+						viewBox='0 0 24 24'
+						stroke-width='2'
+						stroke='currentColor'
+						fill='none'
+						stroke-linecap='round'
+						stroke-linejoin='round'
 					>
+						<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+						<path d='M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z'></path>
+					</svg>
+				</button>
+				
+				<a class='p-2 dark:hidden hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' href='https://github.com/hautph' target='_blank' aria-label='GitHub'>
+					<img src='/assets/img/github-mark.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='transition-transform duration-300 hover:scale-110' />
+				</a>
+				<a class='p-2 hidden dark:block hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' href='https://github.com/hautph' target='_blank' aria-label='GitHub'>
+					<img src='/assets/img/github-mark-white.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='transition-transform duration-300 hover:scale-110' />
+				</a>
+				<a class='p-2 hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' href='https://www.linkedin.com/in/hautph' target='_blank' aria-label='LinkedIn'>
+					<svg width='20' height='20' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true' class='text-zinc-700 dark:text-zinc-300 transition-transform duration-300 hover:scale-110'>
+						<path d='M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z'></path>
+					</svg>
 				</a>
 			</div>
 		</nav>
-		<div
-			id='bottom-navbar'
-			class='fixed bottom-2 left-1/2 -translate-x-1/2 w-auto max-w-full px-4 z-999 transition-transform duration-500 ease-in-out flex justify-center items-center translate-y-full text-base md:text-lg'
-			style='min-height:64px;'>
-			<div
-				class='flex items-center justify-center px-4 py-2 bg-white/90 dark:bg-zinc-900/75 backdrop-blur-md leading-tight rounded-full border dark:border-zinc-700 shadow-lg'>
-				<div class='px-2.5 text-sm'>
-					<HeaderLink class='py-3 flex items-center' href='/' aria-label='Home'>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							width='20'
-							height='20'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke='currentColor'
-							stroke-width='1.7'
-							stroke-linecap='round'
-							stroke-linejoin='round'
-							class='lucide lucide-house'
-							><path d='M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8'></path><path
-								d='M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'
-							></path></svg
-						>
-					</HeaderLink>
-				</div>
+		
+		<!-- Mobile Navigation (Hidden by default) -->
+		<div id='mobile-menu' class='lg:hidden hidden py-4 border-t border-zinc-200 dark:border-zinc-700'>
+			<ul class='space-y-3'>
 				{
 					menu.map((item) => (
-						<div class='px-2.5 text-sm'>
-							<HeaderLink class='py-3 flex items-center' href={item.link}>
+						<li>
+							<HeaderLink href={item.link} class='block py-2 px-4 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg hover:bg-blue-50/50 dark:hover:bg-zinc-800/50'>
 								{item.label}
 							</HeaderLink>
-						</div>
+						</li>
 					))
 				}
-				<button class='p-3' id='themeToggle' aria-label='Theme mode'>
-					<svg
-						class='sun'
-						xmlns='http://www.w3.org/2000/svg'
-						width='24'
-						height='24'
-						viewBox='0 0 24 24'
-						fill='none'
-						stroke='currentColor'
-						stroke-width='2'
-						stroke-linecap='round'
-						stroke-linejoin='round'
-						class='lucide lucide-sun'
-						><circle cx='12' cy='12' r='4'></circle><path d='M12 2v2'></path><path d='M12 20v2'></path><path d='m4.93 4.93 1.41 1.41'
-						></path><path d='m17.66 17.66 1.41 1.41'></path><path d='M2 12h2'></path><path d='M20 12h2'></path><path
-							d='m6.34 17.66-1.41 1.41'></path><path d='m19.07 4.93-1.41 1.41'></path></svg
-					>
-					<svg
-						class='moon'
-						xmlns='http://www.w3.org/2000/svg'
-						width='24'
-						height='24'
-						viewBox='0 0 24 24'
-						fill='none'
-						stroke='currentColor'
-						stroke-width='2'
-						stroke-linecap='round'
-						stroke-linejoin='round'
-						class='lucide lucide-moon'>
-						<path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'></path></svg
-					>
-				</button>
-			</div>
+			</ul>
 		</div>
 	</div>
 
 	<style is:global>
-		#themeToggle .moon {
-			display: none;
-		}
 		.dark #themeToggle .sun {
 			display: none;
 		}
 		.dark #themeToggle .moon {
 			display: block;
 		}
-		#bottom-navbar {
-			will-change: transform;
-			bottom: 0.5rem !important; /* 8px above bottom, more hidden */
-			font-size: 1.125rem; /* text-lg */
+		
+		/* Header scroll effect */
+		#site-header {
+			transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 		}
-		@media (max-width: 640px) {
-			#bottom-navbar {
-				bottom: 0.25rem !important; /* 4px above bottom for mobile */
-				font-size: 1rem; /* text-base */
-			}
+		
+		.scrolled #site-header {
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+			background-color: rgba(255, 255, 255, 0.95);
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
+		
+		.dark .scrolled #site-header {
+			background-color: rgba(24, 24, 27, 0.95);
 		}
 	</style>
 
@@ -159,41 +171,42 @@ const menu = [
 			} else {
 				sendMessage({ setConfig: { theme: 'light' } });
 			}
+			
+			// Toggle moon/sun icons
+			const sunIcon = document.querySelector('#themeToggle .sun');
+			const moonIcon = document.querySelector('#themeToggle .moon');
+			if (sunIcon && moonIcon) {
+				sunIcon.classList.toggle('hidden');
+				moonIcon.classList.toggle('hidden');
+			}
 		};
 		document.getElementById('themeToggle')?.addEventListener('click', handleToggleClick);
-
-		let hideTimeout;
-		const navbar = document.getElementById('bottom-navbar');
-		function showNavbar() {
-			if (!navbar) return;
-			navbar.classList.add('translate-y-0');
-			navbar.classList.remove('translate-y-full');
-		}
-		function hideNavbar() {
-			if (!navbar) return;
-			navbar.classList.add('translate-y-full');
-			navbar.classList.remove('translate-y-0');
-		}
-		function scheduleHide() {
-			clearTimeout(hideTimeout);
-			hideTimeout = setTimeout(hideNavbar, 2000);
-		}
-		// Show on scroll, hide after 2s
-		window.addEventListener('scroll', () => {
-			showNavbar();
-			scheduleHide();
-			lastScrollY = window.scrollY;
-		});
-		// Show when mouse near bottom
-		window.addEventListener('mousemove', (e) => {
-			if (window.innerHeight - e.clientY < 80) {
-				showNavbar();
-				clearTimeout(hideTimeout);
-			} else {
-				scheduleHide();
+		
+		// Mobile menu toggle
+		document.getElementById('menu-toggle')?.addEventListener('click', () => {
+			const mobileMenu = document.getElementById('mobile-menu');
+			if (mobileMenu) {
+				mobileMenu.classList.toggle('hidden');
 			}
 		});
-		// Initial state
-		hideNavbar();
+
+		// Header scroll effect
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 50) {
+				document.body.classList.add('scrolled');
+			} else {
+				document.body.classList.remove('scrolled');
+			}
+		});
+		
+		// Close mobile menu when clicking on a link
+		document.querySelectorAll('#mobile-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				const mobileMenu = document.getElementById('mobile-menu');
+				if (mobileMenu) {
+					mobileMenu.classList.add('hidden');
+				}
+			});
+		});
 	</script>
 </header>

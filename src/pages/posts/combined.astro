@@ -1,0 +1,170 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostsByYear from '../../components/PostsByYear.astro';
+import { Schema } from 'astro-seo-schema';
+import { slugify } from '../../utils';
+
+type BlogPost = CollectionEntry<'blog'>;
+const title = 'Posts & Tags';
+const description = 'Articles, guides, tutorials and tags by Tran Phuc Hau.';
+
+const posts = (await getCollection('blog')).sort((a: BlogPost, b: BlogPost) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Tags section
+interface Tag {
+	value: string;
+	label: string;
+	postCount: number;
+}
+
+function groupTagsByFirstLetter(tags: Tag[]) {
+	const grouped = tags.reduce(
+		(acc, tag) => {
+			const firstLetter = tag.label[0].toUpperCase();
+			if (!acc[firstLetter]) {
+				acc[firstLetter] = [];
+			}
+			acc[firstLetter].push(tag);
+			return acc;
+		},
+		{} as Record<string, Tag[]>
+	);
+
+	return Object.entries(grouped)
+		.sort(([a], [b]) => a.localeCompare(b))
+		.map(([letter, tags]) => ({
+			letter,
+			tags: tags.sort((a, b) => a.label.localeCompare(b.label))
+		}));
+}
+
+const allPosts: BlogPost[] = posts;
+const mappedTags: { [key: string]: Tag } = {};
+for (const post of allPosts) {
+	for (const tag of post.data?.tags || []) {
+		const tagValue = slugify(tag);
+		if (mappedTags[tagValue]) {
+			mappedTags[tagValue].postCount += 1;
+		} else {
+			const _tag: Tag = {
+				value: tagValue,
+				label: tag,
+				postCount: 1
+			};
+			mappedTags[tagValue] = _tag;
+		}
+	}
+}
+const groupedTags = groupTagsByFirstLetter(Object.values(mappedTags));
+
+const blogPostParts = posts.map((post) => {
+	// Extract the slug from the post id (removes 'blog/' and file extension)
+	const slug = post.id.replace('blog/', '').replace(/\.mdx?$/, '');
+	const base: Record<string, any> = {
+		'@type': 'BlogPosting',
+		headline: post.data.title,
+		description: post.data.description,
+		url: `https://cv.cungnhauhoc.net/posts/${slug}/`,
+		datePublished: post.data.pubDate,
+		inLanguage: 'en'
+	};
+	if (post.data.tags) {
+		base.keywords = post.data.tags.join(', ');
+	}
+	return base;
+}) as any[];
+---
+
+<BaseLayout title={title} description={description}>
+	<div class='container'>
+		<div class='mb-10 text-center'>
+			<h1 class='text-3xl font-bold mb-2'>{title}</h1>
+			<p class='text-zinc-700 dark:text-zinc-300 text-lg'>{description}</p>
+		</div>
+		
+		{/* Posts Section */}
+		<div class='mb-16'>
+			<h2 class='text-2xl font-bold mb-6 text-zinc-800 dark:text-zinc-200'>Posts</h2>
+			<div class='flex justify-center'>
+				<input
+					id='post-search'
+					type='text'
+					placeholder='Search posts...'
+					class='mt-4 w-full max-w-md px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100'
+					oninput='window.filterPosts && window.filterPosts()'
+					autocomplete='off'
+				/>
+			</div>
+			<div id='posts-list'>
+				{posts.length === 0 ? <div class='text-gray-500 text-lg py-8 text-center'>No posts found.</div> : <PostsByYear posts={posts} />}
+			</div>
+		</div>
+		
+		{/* Tags Section */}
+		<div>
+			<h2 class='text-2xl font-bold mb-6 text-zinc-800 dark:text-zinc-200'>Tags</h2>
+			<div>
+				{
+					groupedTags.length === 0 ? (
+						<div class='text-gray-500 text-lg py-8 text-center'>No tags found.</div>
+					) : (
+						groupedTags.map(({ letter, tags }) => (
+							<div class='flex gap-2 border-b dark:border-b-zinc-700 py-3 mb-5 capitalize'>
+								<h3 class='text-xl font-bold text-zinc-800 dark:text-zinc-200 w-7 shrink-0'>{letter}</h3>
+								<div class='flex gap-2 flex-wrap'>
+									{(tags || [])?.map((tag: Tag) => (
+										<a
+											class='border border-zinc-300 dark:border-zinc-700 rounded-2xl
+							text-sm text-zinc-700 dark:text-zinc-300 no-underline px-3 py-1
+							transition-all duration-700
+						  hover:border-zinc-700 dark:hover:border-zinc-300'
+											href={`/tags/${slugify(tag.value)}/`}>
+											{tag.label} ({tag.postCount})
+										</a>
+									))}
+								</div>
+							</div>
+						))
+					)
+				}
+			</div>
+		</div>
+		
+		<script is:inline type='module'>
+			window.filterPosts = function () {
+				const input = document.getElementById('post-search');
+				const filter = input.value.toLowerCase();
+				const allPosts = [...document.querySelectorAll('#posts-list > div > div')];
+				let anyVisible = false;
+				allPosts.forEach((card) => {
+					const text = card.textContent.toLowerCase();
+					if (text.includes(filter)) {
+						card.style.display = '';
+						anyVisible = true;
+					} else {
+						card.style.display = 'none';
+					}
+				});
+				const emptyMsg = document.querySelector('#posts-list .text-gray-500');
+				if (emptyMsg) emptyMsg.style.display = anyVisible ? 'none' : '';
+			};
+		</script>
+		<Schema
+			item={{
+				'@context': 'https://schema.org',
+				'@type': 'CollectionPage',
+				name: title,
+				description: description,
+				url: 'https://cv.cungnhauhoc.net/posts/',
+				author: {
+					'@type': 'Person',
+					name: 'Tran Phuc Hau',
+					url: 'https://cv.cungnhauhoc.net/'
+				},
+				hasPart: blogPostParts
+			}}
+		/>
+	</div>
+</BaseLayout>
