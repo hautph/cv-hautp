@@ -1,40 +1,45 @@
 ---
 const title = 'Tran Phuc Hau | Technical Manager';
-const description = 'Welcome to my portfolio! Discover my latest projects, skills, and professional journey as a Technical Manager.';
+const description = 'Welcome to my portfolio! Discover my latest projects, skills, and professional journey as a Technical Manager specializing in AI, Code Agents, and Gemini technologies.';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Experience from '../components/Experience.astro';
-// import RecentPosts from '../layouts/components/RecentPosts.astro';
-
 import RecentProjects from '../components/RecentProjects.astro';
 import Hero from '../components/Hero.astro';
+import TechGridBackground from '../components/TechGridBackground.astro';
+import AIWaveAnimation from '../components/AIWaveAnimation.astro';
 
 ---
 
 <BaseLayout title={title} description={description}>
+	<TechGridBackground />
+	
 	<!-- Hero section - fixed and centered, full viewport -->
 	<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='0'>
 		<Hero />
 	</div>
 
 	<!-- Other sections - normal scroll flow -->
-	<div class='container mx-auto px-4'>
+	<div class='container mx-auto px-4 relative z-10'>
 		<main class='flex flex-col gap-16 relative z-10'>
 			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='200'>
 				<Experience />
 			</div>
 			
-			<!-- <RecentPosts /> -->
 			<div class='animate-section opacity-0 transform translate-y-8 scale-98' data-delay='600'>
 				<RecentProjects />
 			</div>
 			
 		</main>
 	</div>
+	
+	<div class="relative z-10">
+		<AIWaveAnimation />
+	</div>
 </BaseLayout>
 
 <script is:inline>
 	// Typing animation with smooth, slower timing
-	const text = 'I am a Technical Manager';
+	const text = 'Technical Manager';
 	const el = document.getElementById('typing-animation');
 	let i = 0;
 	let forward = true;

@@ -20,10 +20,18 @@ const menu = [
 <header id='site-header' class='flex items-center w-full transition-all duration-500 z-50 border-(--soft-border-color) backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 sticky top-0 shadow-sm'>
 	<div class='container mx-auto px-4'>
 		<nav class='flex gap-4 items-center justify-between py-3'>
-			<!-- Logo/Name -->
+			<!-- Logo/Name with AI theme -->
 			<h2 class='m-0'>
 				<a href='/' class='flex gap-3 items-center text-xl font-bold tracking-tight transition-all duration-300 group'> 
-					<span class='bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-blue-500 transition-all duration-500'>Tran Phuc Hau</span>
+					<!-- AI-themed logo -->
+					<div class="relative w-8 h-8">
+						<div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg transform rotate-45"></div>
+						<div class="absolute inset-1 bg-white dark:bg-zinc-900 rounded transform rotate-45"></div>
+						<div class="absolute inset-2 bg-gradient-to-br from-blue-400 to-purple-500 rounded transform rotate-45 animate-pulse"></div>
+					</div>
+					<span class='bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:via-purple-500 group-hover:to-cyan-400 transition-all duration-500'>
+						Tran Phuc Hau
+					</span>
 				</a>
 			</h2>
 			
@@ -53,9 +61,9 @@ const menu = [
 				{
 					menu.map((item) => (
 						<li>
-							<HeaderLink href={item.link} class='text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:bg-blue-50/50 dark:hover:bg-zinc-800/50 relative'>
+							<HeaderLink href={item.link} class='text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:bg-blue-50/50 dark:hover:bg-zinc-800/50 relative group'>
 								{item.label}
-								<span class='absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full'></span>
+								<span class='absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:left-0 group-hover:w-full'></span>
 							</HeaderLink>
 						</li>
 					))
