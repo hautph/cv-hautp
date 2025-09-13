@@ -5,9 +5,10 @@ type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 
-// Improved active state detection
-const { pathname } = Astro.url;
-const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
+// Improved active state detection with proper null checking
+const pathname = Astro.url?.pathname || '';
+const hrefStr = String(href);
+const isActive = pathname === hrefStr || (hrefStr !== '/' && pathname.startsWith(hrefStr));
 ---
 
 <a
