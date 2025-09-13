@@ -1,117 +1,77 @@
-<section id='hero-section' class='w-full flex items-center justify-center min-h-screen md:h-screen relative overflow-hidden'>
-	<!-- Tech Grid Background -->
+<section id='hero-section' class='w-full flex items-center justify-center min-h-screen md:h-screen relative overflow-hidden py-12 md:py-0'>
+	<!-- Simplified background -->
 	<div class="fixed inset-0 z-0">
-		<div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
-		<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-zinc-900"></div>
-		
-		<!-- Floating tech elements -->
-		<div class="absolute top-1/4 left-1/4 w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-		<div class="absolute top-1/3 right-1/3 w-2 h-2 bg-purple-500 rounded-full animate-ping animation-delay-1000"></div>
-		<div class="absolute bottom-1/4 left-1/3 w-4 h-4 bg-green-500 rounded-full animate-pulse animation-delay-2000"></div>
-		<div class="absolute top-2/3 right-1/4 w-3 h-3 bg-yellow-500 rounded-full animate-ping animation-delay-3000"></div>
-		
-		<!-- Code snippets floating -->
-		<div class="absolute top-1/5 right-1/5 text-xs opacity-20 dark:opacity-30 font-mono animate-float">
-			&lt;AI/&gt;
-		</div>
-		<div class="absolute bottom-1/3 left-1/5 text-xs opacity-20 dark:opacity-30 font-mono animate-float animation-delay-2000">
-			gemini.pro
-		</div>
-		<div class="absolute top-2/3 left-2/3 text-xs opacity-20 dark:opacity-30 font-mono animate-float animation-delay-4000">
-			agent.run()
-		</div>
+		<div class="absolute inset-0 bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800"></div>
 	</div>
 	
-	<!-- Animated background elements -->
-	<div class='absolute inset-0 z-0'>
-		<div class='absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob'></div>
-		<div class='absolute top-1/3 right-1/4 w-64 h-64 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000'></div>
-		<div class='absolute bottom-1/4 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000'></div>
-	</div>
-	
-	<div
-		class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%+160px)] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 w-full px-4 max-w-7xl mx-auto z-10'>
-		{/* Mobile: Image above text, larger; Desktop: Image right of text */}
-		<div class='flex flex-col-reverse md:flex-row items-center md:items-center w-full md:w-auto gap-8 md:gap-12 justify-center'>
-			<div class='text-pretty leading-9 max-w-xs sm:max-w-md md:max-w-lg w-full flex flex-col items-start text-left transform transition-all duration-700 hover:scale-105'>
-				<span class='text-2xl sm:text-3xl font-bold mb-2 block animate-fade-in-up animation-delay-300'>Hello, I'm</span>
-				<h2 class='text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 whitespace-nowrap break-keep max-w-full animate-fade-in-up animation-delay-500 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent'>
+	<div class='container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 py-8 md:py-0 z-10 relative'>
+		<!-- Content column -->
+		<div class='flex flex-col items-start text-left w-full md:w-7/12 lg:w-1/2 order-2 md:order-1'>
+			<div class='animate-fade-in-up animation-delay-300'>
+				<span class='text-lg md:text-xl font-medium text-primary-600 dark:text-accent-400 mb-2 block'>Hello, I'm</span>
+				<h1 class='text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-neutral-900 dark:text-white'>
 					Tran Phuc Hau
+				</h1>
+				<h2 class='text-xl md:text-2xl font-semibold mb-6 text-neutral-700 dark:text-neutral-300'>
+					Technical Manager
 				</h2>
-				<div class='text-base sm:text-lg min-h-[2.5em] flex items-center justify-start w-full animate-fade-in-up animation-delay-700'>
-					<span id='typing-animation' class='whitespace-nowrap font-mono block w-[17ch] max-w-full text-blue-600 dark:text-cyan-400'></span>
-				</div>
-				<div class='flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto animate-fade-in-up animation-delay-1000'>
+				<p class='text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl'>
+					Leading technical teams with 15+ years of experience in IT infrastructure, system administration, 
+					and cloud security. Specializing in AI technologies, Code Agents, and Gemini solutions.
+				</p>
+				<div class='flex flex-col sm:flex-row gap-4'>
 					<a
 						href='mailto:hautph@gmail.com'
-						class='px-6 py-2 rounded-full border-2 border-blue-800 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg hover:from-blue-700 hover:to-purple-700 focus:from-blue-800 focus:to-purple-800 focus:animate-pulse transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-center w-full sm:w-auto relative overflow-hidden group'>
-						<span class='relative z-10'>Contact Me</span>
-						<span class='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left'></span>
+						class='px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-medium shadow-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center w-full sm:w-auto'>
+						Get In Touch
+					</a>
+					<a
+						href='/about/'
+						class='px-6 py-3 rounded-lg border-2 border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-neutral-800 font-medium transition-all duration-300 text-center w-full sm:w-auto'>
+						Learn More
 					</a>
 				</div>
 			</div>
-			<div class='relative inline-block w-52 h-52 sm:w-64 sm:h-64 md:w-[300px] md:h-[300px] mb-12 md:mb-0 md:-translate-x-8 transform transition-all duration-700 hover:scale-110 hover:rotate-3'>
-				<!-- Hexagonal frame for tech theme -->
-				<div class="absolute inset-0 z-10 hexagon-frame pointer-events-none"></div>
-				<img
-					src='/cv/hautp02.jpg'
-					alt='Tran Phuc Hau'
-					width='260'
-					height='260'
-					class='hexagon-image rotate-3 flex-shrink-0 w-full h-full object-cover transition-all duration-500 hover:scale-105 hover:shadow-2xl relative z-20 border-4 border-blue-500 dark:border-purple-500 transform-gpu hover:rotate-6'
-					loading='eager'
-					fetchpriority='high'
-					decoding='async'
-				/>
-			</div>
 		</div>
-	</div>
-	
-	<!-- AI Wave Animation -->
-	<div class="absolute bottom-0 left-0 w-full z-10">
-		<div class="relative w-full h-32 overflow-hidden">
-			<svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 300" preserveAspectRatio="none">
-				<!-- Primary wave (AI blue) -->
-				<path 
-					class="wave-primary"
-					fill="rgba(99, 102, 241, 0.3)"
-					d="M0,150 C300,100 600,200 1200,100 L1200,300 L0,300 Z"
-				></path>
+		
+		<!-- Profile image column -->
+		<div class='w-full md:w-5/12 lg:w-1/2 flex justify-center order-1 md:order-2'>
+			<div class='relative inline-block w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 transform transition-all duration-700 group'>
+				<!-- Background circle with subtle animation -->
+				<div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary-400 to-accent-500 opacity-20 animate-pulse-slow"></div>
 				
-				<!-- Secondary wave (Gemini purple) -->
-				<path 
-					class="wave-secondary"
-					fill="rgba(139, 92, 246, 0.2)"
-					d="M0,200 C300,150 600,250 1200,150 L1200,300 L0,300 Z"
-				></path>
+				<!-- Profile image with professional styling -->
+				<div class="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-neutral-900 shadow-2xl">
+					<img
+						src='/cv/hautp02.jpg'
+						alt='Tran Phuc Hau - Technical Manager'
+						width='288'
+						height='288'
+						class='w-full h-full object-cover transition-all duration-500 group-hover:scale-105'
+						loading='eager'
+						fetchpriority='high'
+						decoding='async'
+					/>
+				</div>
 				
-				<!-- Tertiary wave (Code green) -->
-				<path 
-					class="wave-tertiary"
-					fill="rgba(16, 185, 129, 0.15)"
-					d="M0,250 C300,200 600,300 1200,200 L1200,300 L0,300 Z"
-				></path>
-			</svg>
+				<!-- Decorative elements -->
+				<div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center shadow-lg">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+					</svg>
+				</div>
+				
+				<div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-accent-500 flex items-center justify-center shadow-lg">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+					</svg>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
 
 <style>
-	@keyframes blob {
-		0% {
-			transform: translate(0px, 0px) scale(1);
-		}
-		33% {
-			transform: translate(30px, -50px) scale(1.1);
-		}
-		66% {
-			transform: translate(-20px, 20px) scale(0.9);
-		}
-		100% {
-			transform: translate(0px, 0px) scale(1);
-		}
-	}
-	
 	@keyframes fade-in-up {
 		0% {
 			opacity: 0;
@@ -125,22 +85,21 @@
 	
 	@keyframes pulse-slow {
 		0% {
-			box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4);
+			opacity: 0.15;
+			transform: scale(1);
 		}
-		70% {
-			box-shadow: 0 0 0 15px rgba(96, 165, 250, 0);
+		50% {
+			opacity: 0.25;
+			transform: scale(1.05);
 		}
 		100% {
-			box-shadow: 0 0 0 0 rgba(96, 165, 250, 0);
+			opacity: 0.15;
+			transform: scale(1);
 		}
-	}
-	
-	.animate-blob {
-		animation: blob 7s infinite;
 	}
 	
 	.animate-fade-in-up {
-		animation: fade-in-up 0.6s ease-out forwards;
+		animation: fade-in-up 0.8s ease-out forwards;
 		opacity: 0;
 	}
 	
@@ -156,85 +115,7 @@
 		animation-delay: 0.7s;
 	}
 	
-	.animation-delay-1000 {
-		animation-delay: 1s;
-	}
-	
-	.animation-delay-2000 {
-		animation-delay: 2s;
-	}
-	
-	.animation-delay-3000 {
-		animation-delay: 3s;
-	}
-	
-	.animation-delay-4000 {
-		animation-delay: 4s;
-	}
-	
 	.animate-pulse-slow {
-		animation: pulse-slow 3s infinite;
-	}
-	
-	/* Tech grid pattern */
-	.bg-grid-pattern {
-		background-image: 
-			linear-gradient(rgba(99, 102, 241, 0.3) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(99, 102, 241, 0.3) 1px, transparent 1px);
-		background-size: 40px 40px;
-	}
-	
-	.animate-float {
-		animation: float 8s ease-in-out infinite;
-	}
-	
-	@keyframes float {
-		0% {
-			transform: translateY(0) translateX(0);
-			opacity: 0.1;
-		}
-		50% {
-			transform: translateY(-20px) translateX(10px);
-			opacity: 0.3;
-		}
-		100% {
-			transform: translateY(0) translateX(0);
-			opacity: 0.1;
-		}
-	}
-	
-	/* Hexagon styles */
-	.hexagon-frame {
-		clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-		background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-	}
-	
-	.hexagon-image {
-		clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-	}
-	
-	/* Wave animations */
-	.wave-primary {
-		animation: wave-animation 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-	}
-	
-	.wave-secondary {
-		animation: wave-animation 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite reverse;
-	}
-	
-	.wave-tertiary {
-		animation: wave-animation 18s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-	}
-	
-	@keyframes wave-animation {
-		0% {
-			d: path("M0,150 C300,100 600,200 1200,100 L1200,300 L0,300 Z");
-		}
-		50% {
-			d: path("M0,180 C300,130 600,170 1200,130 L1200,300 L0,300 Z");
-		}
-		100% {
-			d: path("M0,150 C300,100 600,200 1200,100 L1200,300 L0,300 Z");
-		}
+		animation: pulse-slow 4s infinite;
 	}
 </style>

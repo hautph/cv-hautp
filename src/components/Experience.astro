@@ -127,23 +127,33 @@ const experiences = [
 	}
 	
 	.experience-card {
-		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-		transform: translateZ(0);
-		will-change: transform;
-		border: 1px solid rgba(99, 102, 241, 0.2);
-		background: linear-gradient(145deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		background: rgba(255, 255, 255, 0.85);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
+	
+	.dark .experience-card {
+		background: rgba(25, 25, 25, 0.85);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
 	}
 	
 	.experience-card:hover {
-		transform: translateY(-5px) scale(1.02);
-		box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.2), 0 10px 10px -5px rgba(99, 102, 241, 0.1);
-		z-index: 10;
-		border-color: rgba(99, 102, 241, 0.4);
+		transform: translateY(-4px);
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		border-color: rgba(59, 130, 246, 0.3);
+	}
+	
+	.dark .experience-card:hover {
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+		border-color: rgba(99, 155, 255, 0.5);
 	}
 	
 	.timeline-line {
-		transition: all 0.5s ease-in-out;
-		background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #10b981);
+		background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
 	}
 	
 	.timeline-circle {
@@ -153,120 +163,156 @@ const experiences = [
 	
 	.experience-card:hover .timeline-circle {
 		transform: scale(1.2);
-		box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+		box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 	}
 	
-	.dark .experience-card:hover {
-		box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.3), 0 10px 10px -5px rgba(99, 102, 241, 0.1);
+	/* Gray timeline circle in dark mode */
+	.dark .gray-timeline-circle {
+		background-color: #94a3b8; /* slate-400 */
+		border-color: #18181b;
 	}
 	
-	/* Tech-themed icon container */
-	.tech-icon-container {
+	/* Enhanced visibility for green timeline circles in dark mode */
+	.dark .green-timeline-circle {
+		box-shadow: 0 0 8px rgba(74, 222, 128, 0.7);
+	}
+	
+	/* Icon container */
+	.icon-container {
 		background: linear-gradient(145deg, #3b82f6, #8b5cf6);
 		border: 2px solid white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	}
 	
-	.dark .tech-icon-container {
+	.dark .icon-container {
 		border-color: #18181b;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+	}
+	
+	/* Section header */
+	.section-header {
+		position: relative;
+		display: inline-block;
+	}
+	
+	.section-header::after {
+		content: '';
+		position: absolute;
+		bottom: -8px;
+		left: 0;
+		width: 50px;
+		height: 3px;
+		background: linear-gradient(to right, #3b82f6, #8b5cf6);
+		border-radius: 2px;
+	}
+	
+	/* Company badge */
+	.company-badge {
+		background: rgba(59, 130, 246, 0.1);
+		color: #3b82f6;
+	}
+	
+	.dark .company-badge {
+		background: rgba(99, 155, 255, 0.15);
+		color: #639bff;
+		border: 1px solid rgba(99, 155, 255, 0.2);
+	}
+	
+	/* Period badge */
+	.dark .period-badge {
+		background: rgba(139, 92, 246, 0.15);
+		color: #c4b5fd;
+		border: 1px solid rgba(139, 92, 246, 0.2);
+	}
+	
+	/* Description text */
+	.dark .description-text {
+		color: #cbd5e1;
 	}
 </style>
 
-<section class='mb-8 lg:min-h-screen' id='experience'>
-	<div class='text-center mb-12 animate-fade-in-up'>
-		<h2 class='text-2xl sm:text-3xl font-bold mb-2 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent'>Experience</h2>
-		<p class='mb-6 text-center max-w-3xl mx-auto text-zinc-600 dark:text-zinc-400'>
-			Seasoned Technical Manager with 15+ years of proven expertise in leading IT infrastructure teams, designing cloud solutions, and driving digital transformation. Demonstrated success in managing complex enterprise systems, implementing robust security frameworks, and delivering innovative technology solutions that drive business growth.
+<section class='mb-16' id='experience'>
+	<div class='text-center mb-12'>
+		<h2 class='text-2xl sm:text-3xl font-bold mb-4 text-neutral-900 dark:text-white section-header'>Professional Experience</h2>
+		<p class='max-w-3xl mx-auto text-neutral-600 dark:text-slate-300'>
+			A journey through 15+ years of technical leadership, from IT specialist to Technical Manager roles, 
+			driving innovation and delivering scalable solutions.
 		</p>
 	</div>
 	
 	<div class='relative max-w-4xl mx-auto'>
-		<!-- Main vertical line with gradient effect -->
-		<div class='absolute left-6 sm:left-1/2 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-green-400 h-full timeline-line'></div>
+		<!-- Vertical timeline line -->
+		<div class='absolute left-6 md:left-8 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500 h-full timeline-line'></div>
 
-		<div class='space-y-6 sm:space-y-8'>
+		<div class='space-y-8'>
 			{
 				experiences.map((exp, idx) => {
 					return (
-						<div class={`relative flex items-start sm:items-center experience-card rounded-xl p-4 transition-all duration-300 ${idx % 2 === 0 ? 'bg-white/50 dark:bg-zinc-800/50 backdrop-blur-sm' : 'bg-white/30 dark:bg-zinc-800/30 backdrop-blur-sm'}`}>
-							{/* Circle indicator with glow effect */}
-							<div class='absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 z-10 mt-1 sm:mt-0'>
+						<div class='relative flex experience-card rounded-2xl p-6 md:p-8'>
+							{/* Timeline indicator */}
+							<div class='absolute left-4 md:left-6 transform -translate-x-1/2 z-10 mt-3'>
 								<div
-									class={`w-4 h-4 sm:w-6 sm:h-6 rounded-full border-2 sm:border-4 border-white dark:border-gray-900 timeline-circle ${exp.color === 'green' ? 'bg-green-400 green-pulse' : 'bg-zinc-400 shadow-md'}`}
+									class={`w-5 h-5 rounded-full border-2 border-white dark:border-neutral-900 timeline-circle ${exp.color === 'green' ? 'bg-green-500 green-pulse green-timeline-circle' : 'bg-neutral-400 gray-timeline-circle'}`}
 								/>
 							</div>
-							{/* Icon with tech theme */}
-							<div class='absolute left-12 sm:left-1/2 transform sm:-translate-x-1/2 z-10 mt-1 sm:mt-0'>
-								<div class='w-8 h-8 rounded-lg tech-icon-container flex items-center justify-center shadow-md'>
+							
+							{/* Icon */}
+							<div class='absolute left-12 md:left-16 transform -translate-x-1/2 z-10 mt-2'>
+								<div class='w-10 h-10 rounded-xl icon-container flex items-center justify-center shadow-md'>
 									{exp.icon === 'briefcase' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
 										</svg>
 									)}
 									{exp.icon === 'cloud' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4 4 0 003 15z" />
 										</svg>
 									)}
 									{exp.icon === 'user-group' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
 										</svg>
 									)}
 									{exp.icon === 'server' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
 										</svg>
 									)}
 									{exp.icon === 'shield-check' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
 										</svg>
 									)}
 									{exp.icon === 'globe-alt' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
 										</svg>
 									)}
 									{exp.icon === 'chip' && (
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
 										</svg>
 									)}
 								</div>
 							</div>
+							
 							{/* Content */}
-							<div class={`w-full pl-24 sm:w-1/2 ${idx % 2 === 1 ? 'sm:pr-8 sm:text-right sm:pl-0' : 'sm:ml-auto sm:pl-8'}`}>
-								<time class='font-mono italic text-xs sm:text-sm text-blue-600 dark:text-cyan-400'>{exp.period}</time>
-								{exp.link ? (
-									<a href={exp.link} target='_blank' rel='noopener' class='block group focus:outline-none'>
-										<div class={`text-base sm:text-lg font-black group-hover:underline group-focus:underline text-zinc-800 dark:text-zinc-100`}>
-											{exp.title}
-											{exp.company || exp.type || exp.location ? (
-												<span class='font-normal text-gray-700 dark:text-gray-300'>
-													{exp.company ? ` · ${exp.company}` : ''}
-													{exp.type ? ` · ${exp.type}` : ''}
-													{exp.location ? ` · ${exp.location}` : ''}
-												</span>
-											) : null}
-										</div>
-										<p class='mt-1 sm:mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300'>{exp.description}</p>
-									</a>
-								) : (
-									<>
-										<div class={`text-base sm:text-lg font-black text-zinc-800 dark:text-zinc-100`}>
-											{exp.title}
-											{exp.company || exp.type || exp.location ? (
-												<span class='font-normal text-gray-700 dark:text-gray-300'>
-													{exp.company ? ` · ${exp.company}` : ''}
-													{exp.type ? ` · ${exp.type}` : ''}
-													{exp.location ? ` · ${exp.location}` : ''}
-												</span>
-											) : null}
-										</div>
-										<p class='mt-1 sm:mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300'>{exp.description}</p>
-									</>
-								)}
+							<div class='w-full pl-16 md:pl-24'>
+								<div class='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3'>
+									<div>
+										<h3 class='text-xl font-bold text-neutral-900 dark:text-white'>{exp.title}</h3>
+										{exp.company && (
+											<span class='inline-block mt-1 px-3 py-1 rounded-full text-sm font-medium company-badge'>
+												{exp.company}
+											</span>
+										)}
+									</div>
+									<time class='text-sm font-medium text-primary-600 dark:text-accent-300 whitespace-nowrap period-badge px-3 py-1 rounded-full'>
+										{exp.period}
+									</time>
+								</div>
+								
+								<p class='text-neutral-600 dark:text-slate-300 leading-relaxed mt-3 description-text'>{exp.description}</p>
 							</div>
 						</div>
 					);

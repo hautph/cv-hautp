@@ -64,7 +64,7 @@ import TechnicalExpertise from '../components/TechnicalExpertise.astro';
 					<div id='cv-english' class='cv-content-item hidden'>
 						<iframe 
 							src='/cv/CV-English.pdf' 
-							class='w-full h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg'
+							class='w-full h-[600px] border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800'
 							title='English CV'
 						></iframe>
 					</div>
@@ -73,7 +73,7 @@ import TechnicalExpertise from '../components/TechnicalExpertise.astro';
 					<div id='cv-vietnamese' class='cv-content-item hidden'>
 						<iframe 
 							src='/cv/CV-Vietnamese.pdf' 
-							class='w-full h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg'
+							class='w-full h-[600px] border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800'
 							title='Vietnamese CV'
 						></iframe>
 					</div>
@@ -146,6 +146,12 @@ import TechnicalExpertise from '../components/TechnicalExpertise.astro';
 	/* Password Modal Animation */
 	#password-modal {
 		animation: fadeIn 0.3s ease-out;
+	}
+	
+	/* Improved dark mode iframe styling */
+	.dark iframe {
+		background-color: #1f2937; /* gray-800 */
+		border-color: #4b5563; /* gray-600 */
 	}
 </style>
 
