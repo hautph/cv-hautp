@@ -3,20 +3,20 @@
 
 # Portfolio v3 Website
 
-> **Note:** If you are looking for the Next.js version of my portfolio, check out [https://github.com/muhammad-fiaz/portfolio](https://github.com/muhammad-fiaz/portfolio).
+> **Note:** If you are looking for the Next.js version of my portfolio, check out [https://github.com/hautph](https://github.com/hautph).
 
 This is the source code for my portfolio website, built using [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
 
-- **Live Site**: [https://v3.muhammadfiaz.com](https://v3.muhammadfiaz.com)
-- **GitHub Repository**: [https://github.com/muhammad-fiaz/website](https://github.com/muhammad-fiaz/website)
+- **Live Site**: [https://cv.cungnhauhoc.net](https://cv.cungnhauhoc.net)
+- **GitHub Repository**: [https://github.com/hautph/cv-hautp](https://github.com/hautph/cv-hautp)
 
 ## Home Page
 
-The home page showcases my professional profile, projects, and ways to contact me. Visit it at [https://v3.muhammadfiaz.com](https://v3.muhammadfiaz.com).
+The home page showcases my professional profile, projects, and ways to contact me. Visit it at [https://cv.cungnhauhoc.net](https://cv.cungnhauhoc.net).
 
 ## Issues
 
-If you encounter any bugs, have questions, or want to suggest new features, please use the [Issues](https://github.com/muhammad-fiaz/website/issues) page in this repository.
+If you encounter any bugs, have questions, or want to suggest new features, please use the [Issues](https://github.com/hautph/cv-hautp/issues) page in this repository.
 
 ---
 
@@ -32,7 +32,7 @@ If you encounter any bugs, have questions, or want to suggest new features, plea
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/muhammad-fiaz/website.git
+   git clone https://github.com/hautph/cv-hautp.git
    cd website
    ```
 

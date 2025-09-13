@@ -25,7 +25,7 @@ const getAdapter = () => {
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://muhammadfiaz.com',
+	site: 'https://cv.cungnhauhoc.net',
 	integrations: [mdx(), sitemap(), partytown(), robotsTxt()],
 
 	markdown: {
@@ -34,7 +34,7 @@ export default defineConfig({
 			[
 				autoNewTabExternalLinks,
 				{
-					domain: 'muhammadfiaz.com'
+					domain: 'cv.cungnhauhoc.net'
 				}
 			]
 		]
