@@ -1,0 +1,7 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <rect width="60" height="60" rx="10" fill="#ff6a00"/>
+  <g transform="translate(15, 15)">
+    <circle cx="15" cy="15" r="12" fill="white"/>
+    <text x="15" y="20" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#ff6a00" font-weight="bold">ACA</text>
+  </g>
+</svg>

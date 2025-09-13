@@ -1,102 +1,393 @@
 ---
-const technicalExpertise = {
-    "Infrastructure & Automation": [
-        "System Administration (Linux)",
-        "CI/CD (Jenkins, GitLab CI)",
-        "Infrastructure as Code (Terraform, Ansible)",
-        "Containerization (Docker, Kubernetes)"
-    ],
-    "Cloud Platforms": [
-        "Alibaba Cloud",
-        "AWS",
-        "Azure",
-        "Google Cloud Platform"
-    ],
-    "Security & Compliance": [
-        "Network Security",
-        "SOC2/ISO27001 compliance",
-        "Vulnerability Management",
-        "Firewalls",
-        "VPNs"
-    ],
-    "Core Technologies": [
-        "Scripting (Python, Bash)",
-        "Monitoring (Nagios, Prometheus)",
-        "Databases (MySQL, PostgreSQL)"
-    ],
-    "DevSecOps": [
-        "Security Automation",
-        "Static Application Security Testing (SAST)",
-        "Dynamic Application Security Testing (DAST)",
-        "Software Composition Analysis (SCA)",
-        "Container Security",
-        "Cloud Security Posture Management (CSPM)"
-    ],
-    "Virtualization": [
-        "VMWare",
-        "Proxmox"
-    ]
-};
-
-const certifications = [
-    "Alibaba Cloud MVP (2023, 2024) - Security Focus",
-    "Alibaba Cloud ACP DevOps Engineer Certification",
-    "Alibaba Cloud ACA Cloud Security Certification"
+const technicalSkills = [
+  { 
+    name: "Alibaba Cloud", 
+    logo: "https://cdn.worldvectorlogo.com/logos/alibaba-cloud-1.svg",
+    category: "Cloud Implementation",
+    rating: 5
+  },
+  { 
+    name: "Docker", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    category: "Container Deployment",
+    rating: 5
+  },
+  { 
+    name: "Kubernetes", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    category: "Container Deployment",
+    rating: 5
+  },
+  { 
+    name: "Jenkins", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+    category: "Automation Pipeline",
+    rating: 5
+  },
+  { 
+    name: "GitLab", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
+    category: "Automation Pipeline",
+    rating: 5
+  },
+  { 
+    name: "GitHub Actions", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    category: "Automation Pipeline",
+    rating: 4
+  },
+  { 
+    name: "Terraform", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    category: "Infrastructure as Code",
+    rating: 5
+  },
+  { 
+    name: "Ansible", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg",
+    category: "Infrastructure as Code",
+    rating: 4
+  },
+  { 
+    name: "Fortinet", 
+    logo: "https://cdn.worldvectorlogo.com/logos/fortinet-logo.svg",
+    category: "Security Implementation",
+    rating: 5
+  },
+  { 
+    name: "Sophos", 
+    logo: "https://cdn.worldvectorlogo.com/logos/sophos-logo.svg",
+    category: "Security Implementation",
+    rating: 4
+  },
+  { 
+    name: "OpenVPN", 
+    logo: "https://cdn.worldvectorlogo.com/logos/openvpn-2.svg",
+    category: "Security Implementation",
+    rating: 4
+  },
+  { 
+    name: "Prometheus", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
+    category: "System Monitoring",
+    rating: 4
+  },
+  { 
+    name: "Grafana", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
+    category: "System Monitoring",
+    rating: 4
+  },
+  { 
+    name: "Nagios", 
+    logo: "https://cdn.worldvectorlogo.com/logos/nagios.svg",
+    category: "System Monitoring",
+    rating: 5
+  },
+  { 
+    name: "MySQL", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    category: "Database Management",
+    rating: 5
+  },
+  { 
+    name: "PostgreSQL", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    category: "Database Management",
+    rating: 4
+  },
+  { 
+    name: "MongoDB", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    category: "Database Management",
+    rating: 4
+  },
+  { 
+    name: "Redis", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+    category: "Database Management",
+    rating: 4
+  },
+  { 
+    name: "Python", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    category: "Scripting & Development",
+    rating: 4
+  },
+  { 
+    name: "Bash", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+    category: "Scripting & Development",
+    rating: 5
+  },
+  { 
+    name: "Linux", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+    category: "System Administration",
+    rating: 5
+  },
+  { 
+    name: "Ubuntu", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg",
+    category: "System Administration",
+    rating: 5
+  },
+  { 
+    name: "VMware", 
+    logo: "https://cdn.worldvectorlogo.com/logos/vmware-1.svg",
+    category: "Virtualization",
+    rating: 5
+  },
+  { 
+    name: "Veeam", 
+    logo: "https://cdn.worldvectorlogo.com/logos/veeam-logo.svg",
+    category: "Virtualization",
+    rating: 4
+  }
 ];
 
-const categoryIcons: { [key: string]: string } = {
-    "Infrastructure & Automation": `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="3" y="4" width="18" height="8" rx="3"></rect><line x1="7" y1="8" x2="7" y2="8.01"></line><line x1="11" y1="8" x2="11" y2="8.01"></line><line x1="15" y1="8" x2="15" y2="8.01"></line><rect x="3" y="12" width="18" height="8" rx="3"></rect><line x1="7" y1="16" x2="7" y2="16.01"></line><line x1="11" y1="16" x2="11" y2="16.01"></line><line x1="15" y1="16" x2="15" y2="16.01"></line></svg>`,
-    "Cloud Platforms": `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M7 18a4.6 4.6 0 0 1 0 -9a5 5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path></svg>`,
-    "Security & Compliance": `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"></path></svg>`,
-    "Core Technologies": `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="7 8 3 12 7 16"></polyline><polyline points="17 8 21 12 17 16"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg>`,
-    "DevSecOps": `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock-access" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path><path d="M12 3c-2.492 0 -4.002 1.508 -4 4v4h8v-4c-.002 -2.492 -1.508 -4 -4 -4z"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>`,
-    "Virtualization": `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layers-linked" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8.281 4.857l-3.281 1.143l8 4l8 -4l-3.285 -1.142"></path><path d="M16 12.5l4 -2l-8 -4l-4 2"></path><path d="M16 12.5v5.5l-8 4v-5.5"></path><path d="M8 12.5v5.5l4 2v-5.5"></path><path d="M3 19l3 1.5"></path><path d="M15 10l3 -1.5"></path></svg>`
-};
+const categories = [
+  "All",
+  "Cloud Implementation",
+  "Container Deployment",
+  "Automation Pipeline",
+  "Security Implementation",
+  "System Monitoring",
+  "Database Management",
+  "Scripting & Development",
+  "System Administration",
+  "Virtualization",
+  "Infrastructure as Code"
+];
+
+const certifications = [
+  { 
+    name: "Alibaba Cloud MVP", 
+    years: "2023, 2024, 2025", 
+    focus: "Security Focus",
+    logo: "/assets/img/certification-logos/alibaba-cloud-mvp.svg",
+    description: "Recognized as a Most Valuable Professional for contributions to the Alibaba Cloud community and expertise in cloud security solutions. As an MVP, I actively share knowledge, contribute to product improvements, and help developers understand and implement Alibaba Cloud technologies effectively. Achieved for three consecutive years (2023-2025).",
+    link: "https://mvp.alibabacloud.com/mvp/detail/342"
+  },
+  { 
+    name: "Alibaba Cloud ACP DevOps Engineer", 
+    years: "Current", 
+    focus: "DevOps Implementation",
+    logo: "/assets/img/certification-logos/alibaba-cloud-acp.svg",
+    description: "Certified professional in deploying and managing applications on Alibaba Cloud using DevOps tools and practices. Demonstrates expertise in CI/CD pipelines, containerization, and automated deployment strategies on the Alibaba Cloud platform."
+  },
+  { 
+    name: "Alibaba Cloud ACP Cloud Security", 
+    years: "Current", 
+    focus: "Cloud Security",
+    logo: "/assets/img/certification-logos/alibaba-cloud-acp-cs.svg",
+    description: "Professional technical certification oriented to architects, developers, and O&M personnel that use Alibaba Cloud security products. Validates expertise in implementing and managing cloud security solutions on the Alibaba Cloud platform."
+  },
+  { 
+    name: "Alibaba Cloud ACP Cloud Computing", 
+    years: "Current", 
+    focus: "Cloud Computing",
+    logo: "/assets/img/certification-logos/alibaba-cloud-acp-cc.svg",
+    description: "Professional certification covering a spectrum of Alibaba Cloud core services, including architecture, networking, cloud security, and best practices. Demonstrates advanced skills in designing and implementing cloud solutions."
+  },
+  { 
+    name: "Alibaba Cloud ACA Cloud Security", 
+    years: "Current", 
+    focus: "Cloud Security",
+    logo: "/assets/img/certification-logos/alibaba-cloud-aca.svg",
+    description: "Associate level certification demonstrating understanding of cloud security concepts and best practices on Alibaba Cloud platform. Covers identity and access management, network security, data protection, and compliance frameworks."
+  },
+  { 
+    name: "Alibaba Cloud ACA Cloud Computing", 
+    years: "Current", 
+    focus: "Cloud Computing",
+    logo: "/assets/img/certification-logos/alibaba-cloud-aca-cc.svg",
+    description: "Associate certification designed for those who can use Alibaba Cloud Computing products. Covers all of Alibaba Cloud's core products from computing and storage to networking and security services."
+  },
+  { 
+    name: "ZStack Cloud Computing Consultant (ZCCC)", 
+    years: "Current", 
+    focus: "Cloud Architecture",
+    logo: "/assets/img/certification-logos/zstack-zccc.svg",
+    description: "Professional certification validating expertise in ZStack cloud computing architecture and implementation. Demonstrates advanced skills in designing and deploying enterprise-grade cloud solutions using ZStack technology."
+  },
+  { 
+    name: "ZStack Cloud Computing Technician (ZCCT)", 
+    years: "Current", 
+    focus: "Cloud Operations",
+    logo: "/assets/img/certification-logos/zstack-zcct.svg",
+    description: "Technician level certification for professionals working with ZStack cloud computing platform. Validates skills in installation, configuration, maintenance, and troubleshooting of ZStack cloud environments."
+  }
+];
 ---
 
-<section class="mb-8 lg:min-h-screen" id="technical-expertise">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-center flex items-center justify-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tools" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4"></path>
-            <line x1="14.5" y1="5.5" x2="18.5" y2="9.5"></line>
-            <polyline points="12 8 7 3 3 7 8 12"></polyline>
-            <line x1="7" y1="8" x2="5.5" y2="9.5"></line>
-            <polyline points="16 12 21 17 17 21 12 16"></polyline>
-            <line x1="17" y1="16" x2="18.5" y2="17.5"></line>
-        </svg>
-        Technical Expertise
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-        {Object.entries(technicalExpertise).map(([category, skills]) => (
-            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
-                    {categoryIcons[category] && <Fragment set:html={categoryIcons[category]} />}
-                    {category}
-                </h3>
-                <ul class="list-disc list-inside space-y-2">
-                    {skills.map(skill => (
-                        <li>{skill}</li>
-                    ))}
-                </ul>
+<section class="py-20 relative" id="technical-expertise">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        <span class="text-zinc-900 dark:text-zinc-100">Technical Skills</span>
+      </h2>
+    </div>
+    
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      {categories.map((category, index) => (
+        <button 
+          class={`px-6 py-3 rounded-full border transition-all duration-300 font-medium text-sm ${
+            index === 0 
+              ? 'bg-blue-600 border-blue-600 text-white shadow-lg' 
+              : 'bg-gray-100 dark:bg-zinc-800 border-gray-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-300'
+          }`}
+          data-category={category}
+          onclick="filterSkills(this)"
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      {technicalSkills.map((skill, index) => (
+        <div class="group relative" data-category={skill.category}>
+          <div class="bg-gray-50 dark:bg-zinc-800 backdrop-blur-sm border border-gray-200 dark:border-zinc-700 rounded-2xl p-6 text-center transition-all duration-300 hover:border-blue-500 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:shadow-lg h-full flex flex-col">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+              <div class="relative w-full h-full flex items-center justify-center bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-700">
+                <img 
+                  alt={skill.name} 
+                  loading="lazy" 
+                  width="50" 
+                  height="50" 
+                  decoding="async" 
+                  class="object-contain" 
+                  src={skill.logo}
+                  onerror={`this.src='/assets/img/tech-logos/${skill.name.toLowerCase().replace(/\s+/g, '-')}.svg'; this.style.width='50px'; this.style.height='50px';`}
+                />
+              </div>
             </div>
-        ))}
+            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300">
+              {skill.name}
+            </h3>
+            <div class="flex justify-center space-x-1 mb-3">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div 
+                  class={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    i < skill.rating 
+                      ? 'bg-blue-600 group-hover:bg-blue-300' 
+                      : 'bg-gray-300 dark:bg-zinc-600 group-hover:bg-gray-400 dark:group-hover:bg-zinc-500'
+                  }`}
+                ></div>
+              ))}
+            </div>
+            <span class="text-xs px-3 py-1.5 rounded-full bg-gray-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 mt-auto">
+              {skill.category}
+            </span>
+          </div>
+        </div>
+      ))}
     </div>
-
-    <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-center mt-12 flex items-center justify-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-award" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <circle cx="12" cy="9" r="6"></circle>
-            <polyline points="9 14.2 12 17.2 15 14.2"></polyline>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-        </svg>
-        Certifications
-    </h2>
-    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8">
-        <ul class="list-disc list-inside space-y-2">
-            {certifications.map(cert => (
-                <li>{cert}</li>
-            ))}
-        </ul>
-    </div>
+  </div>
+  
+  <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center mt-20 flex items-center justify-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-award" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <circle cx="12" cy="9" r="6"></circle>
+      <polyline points="9 14.2 12 17.2 15 14.2"></polyline>
+      <line x1="12" y1="17" x2="12" y2="21"></line>
+    </svg>
+    Certifications
+  </h2>
+  <div class="max-w-6xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {certifications.map((cert, index) => (
+      <div class="bg-white dark:bg-zinc-800 rounded-2xl border border-gray-200 dark:border-zinc-700 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <div class="flex-shrink-0 w-16 h-16 rounded-lg bg-gray-100 dark:bg-zinc-700 flex items-center justify-center mr-4">
+              <img src={cert.logo} alt={cert.name} class="w-10 h-10 object-contain" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100">{cert.name}</h3>
+              <p class="text-sm text-blue-600 dark:text-blue-300">{cert.years}</p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
+              {cert.focus}
+            </span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+            {cert.description}
+          </p>
+          <div class="flex justify-between items-center">
+            <div class="flex">
+              {[...Array(5)].map((_, i) => (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            {cert.link ? (
+              <a href={cert.link} target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-blue-600 dark:text-blue-300 hover:underline">
+                View Profile
+              </a>
+            ) : (
+              <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Verified</span>
+            )}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
 </section>
+
+<style>
+  /* Category filtering styles */
+  [data-category]:not([data-category="All"]) {
+    display: block;
+  }
+  
+  [data-category].hidden {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  // Category filtering functionality
+  function filterSkills(button) {
+    const selectedCategory = button.getAttribute('data-category');
+    
+    // Get all category buttons and skill items
+    const categoryButtons = document.querySelectorAll('[data-category]');
+    const skillItems = document.querySelectorAll('.group.relative');
+    
+    // Update active button
+    categoryButtons.forEach(btn => {
+      if (btn === button) {
+        btn.classList.remove('bg-gray-100', 'dark:bg-zinc-800', 'border-gray-200', 'dark:border-zinc-700', 'text-zinc-700', 'dark:text-zinc-300', 'hover:border-blue-500', 'hover:text-blue-600', 'dark:hover:text-blue-300');
+        btn.classList.add('bg-blue-600', 'border-blue-600', 'text-white', 'shadow-lg');
+      } else {
+        btn.classList.remove('bg-blue-600', 'border-blue-600', 'text-white', 'shadow-lg');
+        btn.classList.add('bg-gray-100', 'dark:bg-zinc-800', 'border-gray-200', 'dark:border-zinc-700', 'text-zinc-700', 'dark:text-zinc-300', 'hover:border-blue-500', 'hover:text-blue-600', 'dark:hover:text-blue-300');
+      }
+    });
+    
+    // Filter skills
+    skillItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      if (selectedCategory === 'All' || itemCategory === selectedCategory) {
+        item.classList.remove('hidden');
+        item.style.display = 'block';
+      } else {
+        item.classList.add('hidden');
+        item.style.display = 'none';
+      }
+    });
+  }
+  
+  // Initialize all skills as visible
+  document.addEventListener('DOMContentLoaded', function() {
+    const skillItems = document.querySelectorAll('.group.relative');
+    skillItems.forEach(item => {
+      item.classList.remove('hidden');
+      item.style.display = 'block';
+    });
+  });
+</script>

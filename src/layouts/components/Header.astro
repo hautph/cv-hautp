@@ -17,26 +17,27 @@ const menu = [
 ];
 ---
 
-<header id='site-header' class='flex items-center w-full transition-all duration-500 z-50 border-(--soft-border-color) backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 sticky top-0 shadow-sm'>
-	<div class='container mx-auto px-4'>
+<header id='site-header' class='flex items-center w-full transition-all duration-500 z-50 border-(--soft-border-color) backdrop-blur-xl bg-gradient-to-r from-white/90 to-blue-50/30 dark:from-zinc-900/90 dark:to-purple-900/10 sticky top-0 shadow-lg'>
+	<div class='container mx-auto px-4 relative z-50'>
 		<nav class='flex gap-4 items-center justify-between py-3'>
 			<!-- Logo/Name with AI theme -->
 			<h2 class='m-0'>
 				<a href='/' class='flex gap-3 items-center text-xl font-bold tracking-tight transition-all duration-300 group'> 
-					<!-- AI-themed logo -->
-					<div class="relative w-8 h-8">
-						<div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg transform rotate-45"></div>
-						<div class="absolute inset-1 bg-white dark:bg-zinc-900 rounded transform rotate-45"></div>
-						<div class="absolute inset-2 bg-gradient-to-br from-blue-400 to-purple-500 rounded transform rotate-45 animate-pulse"></div>
+					<!-- Enhanced AI-themed logo with animation -->
+					<div class="relative w-10 h-10">
+						<div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl transform rotate-12 animate-pulse"></div>
+						<div class="absolute inset-1 bg-white dark:bg-zinc-900 rounded-lg transform -rotate-12"></div>
+						<div class="absolute inset-2 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md transform rotate-12 animate-pulse animation-delay-1000"></div>
+						<div class="absolute inset-3 bg-white dark:bg-zinc-900 rounded transform -rotate-12"></div>
 					</div>
-					<span class='bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:via-purple-500 group-hover:to-cyan-400 transition-all duration-500'>
+					<span class='bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:via-purple-500 group-hover:to-cyan-400 transition-all duration-500 text-2xl'>
 						Tran Phuc Hau
 					</span>
 				</a>
 			</h2>
 			
-			<!-- Mobile menu button -->
-			<button id='menu-toggle' class='p-2 lg:hidden hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' aria-label='Toggle menu'>
+			<!-- Mobile menu button with enhanced styling -->
+			<button id='menu-toggle' class='p-3 lg:hidden hover:bg-blue-100 dark:hover:bg-purple-900 rounded-xl transition-all duration-300 transform hover:scale-110' aria-label='Toggle menu'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					class='icon icon-tabler icon-tabler-menu-2 w-6 h-6 text-zinc-700 dark:text-zinc-300'
@@ -56,23 +57,23 @@ const menu = [
 				</svg>
 			</button>
 			
-			<!-- Desktop Navigation -->
-			<ul class='hidden lg:flex items-center gap-8'>
+			<!-- Desktop Navigation with enhanced styling -->
+			<ul class='hidden lg:flex items-center gap-1 relative z-50'>
 				{
 					menu.map((item) => (
 						<li>
-							<HeaderLink href={item.link} class='text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:bg-blue-50/50 dark:hover:bg-zinc-800/50 relative group'>
+							<HeaderLink href={item.link} class='text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-bold transition-all duration-300 px-4 py-2 rounded-xl hover:bg-blue-50/50 dark:hover:bg-purple-900/30 relative group text-lg'>
 								{item.label}
-								<span class='absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:left-0 group-hover:w-full'></span>
+								<span class='absolute bottom-1 left-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 group-hover:left-2 group-hover:w-3/4 rounded-full'></span>
 							</HeaderLink>
 						</li>
 					))
 				}
 			</ul>
 			
-			<!-- Social Icons & Theme Toggle -->
-			<div class='flex items-center gap-1'>
-				<button id='themeToggle' class='p-2 hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' aria-label='Toggle theme'>
+			<!-- Social Icons & Theme Toggle with enhanced visibility -->
+			<div class='flex items-center gap-2 relative z-40'>
+				<button id='themeToggle' class='p-3 bg-white dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-purple-900 rounded-xl transition-all duration-300 transform hover:scale-110 border-2 border-zinc-400 dark:border-zinc-500 shadow-md hover:shadow-lg animate-pulse-slow' aria-label='Toggle theme'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						class='sun w-5 h-5 text-zinc-700 dark:text-zinc-300'
@@ -108,13 +109,11 @@ const menu = [
 					</svg>
 				</button>
 				
-				<a class='p-2 dark:hidden hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' href='https://github.com/hautph' target='_blank' aria-label='GitHub'>
-					<img src='/assets/img/github-mark.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='transition-transform duration-300 hover:scale-110' />
+				<a class='p-3 bg-white dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-purple-900 rounded-xl transition-all duration-300 transform hover:scale-110 border-2 border-zinc-400 dark:border-zinc-500 shadow-md hover:shadow-lg' href='https://github.com/hautph' target='_blank' aria-label='GitHub'>
+					<img src='/assets/img/github-mark.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='transition-transform duration-300 hover:scale-110 dark:hidden' />
+					<img src='/assets/img/github-mark-white.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='transition-transform duration-300 hover:scale-110 hidden dark:block' />
 				</a>
-				<a class='p-2 hidden dark:block hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' href='https://github.com/hautph' target='_blank' aria-label='GitHub'>
-					<img src='/assets/img/github-mark-white.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='transition-transform duration-300 hover:scale-110' />
-				</a>
-				<a class='p-2 hover:bg-blue-50 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300' href='https://www.linkedin.com/in/hautph' target='_blank' aria-label='LinkedIn'>
+				<a class='p-3 bg-white dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-purple-900 rounded-xl transition-all duration-300 transform hover:scale-110 border-2 border-zinc-400 dark:border-zinc-500 shadow-md hover:shadow-lg' href='https://www.linkedin.com/in/hautph' target='_blank' aria-label='LinkedIn'>
 					<svg width='20' height='20' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true' class='text-zinc-700 dark:text-zinc-300 transition-transform duration-300 hover:scale-110'>
 						<path d='M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z'></path>
 					</svg>
@@ -123,22 +122,111 @@ const menu = [
 		</nav>
 		
 		<!-- Mobile Navigation (Hidden by default) -->
-		<div id='mobile-menu' class='lg:hidden hidden py-4 border-t border-zinc-200 dark:border-zinc-700'>
+		<div id='mobile-menu' class='lg:hidden hidden py-4 border-t border-zinc-200 dark:border-zinc-700 animate-fade-in-down'>
 			<ul class='space-y-3'>
 				{
 					menu.map((item) => (
 						<li>
-							<HeaderLink href={item.link} class='block py-2 px-4 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg hover:bg-blue-50/50 dark:hover:bg-zinc-800/50'>
+							<HeaderLink href={item.link} class='block py-3 px-6 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-bold rounded-xl hover:bg-blue-50/50 dark:hover:bg-purple-900/30 text-lg transition-all duration-300 transform hover:translate-x-2'>
 								{item.label}
 							</HeaderLink>
 						</li>
 					))
 				}
+				<li class='pt-3 border-t border-zinc-200 dark:border-zinc-700'>
+					<div class='flex items-center gap-4 px-6'>
+						<span class='text-zinc-700 dark:text-zinc-300'>Theme:</span>
+						<button id='mobile-themeToggle' class='p-2 bg-white dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-purple-900 rounded-lg transition-all duration-300 border-2 border-zinc-400 dark:border-zinc-500 shadow-md' aria-label='Toggle theme'>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								class='sun w-5 h-5 text-zinc-700 dark:text-zinc-300'
+								width='24'
+								height='24'
+								viewBox='0 0 24 24'
+								stroke-width='2'
+								stroke='currentColor'
+								fill='none'
+								stroke-linecap='round'
+								stroke-linejoin='round'
+							>
+								<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+								<circle cx='12' cy='12' r='4'></circle>
+								<path
+									d='M3 12h1m8 -9v1m8 0h1m-9 8v1m-6.4 -12.4l-.7 .7m12.1 -.7l.7 .7m-9.4 7.1l-.7 .7m12.1 -.7l.7 .7'
+								></path>
+							</svg>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								class='moon w-5 h-5 text-zinc-700 dark:text-zinc-300 hidden'
+								width='24'
+								height='24'
+								viewBox='0 0 24 24'
+								stroke-width='2'
+								stroke='currentColor'
+								fill='none'
+								stroke-linecap='round'
+								stroke-linejoin='round'
+							>
+								<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+								<path d='M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z'></path>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class='pt-3'>
+					<div class='flex items-center gap-4 px-6'>
+						<span class='text-zinc-700 dark:text-zinc-300'>Follow:</span>
+						<a class='p-2 bg-white dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-purple-900 rounded-lg transition-all duration-300 border-2 border-zinc-400 dark:border-zinc-500 shadow-md' href='https://github.com/hautph' target='_blank' aria-label='GitHub'>
+							<img src='/assets/img/github-mark.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='dark:hidden' />
+							<img src='/assets/img/github-mark-white.svg' width='20' height='20' alt='GitHub' loading='lazy' decoding='async' class='hidden dark:block' />
+						</a>
+						<a class='p-2 bg-white dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-purple-900 rounded-lg transition-all duration-300 border-2 border-zinc-400 dark:border-zinc-500 shadow-md' href='https://www.linkedin.com/in/hautph' target='_blank' aria-label='LinkedIn'>
+							<svg width='20' height='20' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true' class='text-zinc-700 dark:text-zinc-300'>
+								<path d='M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z'></path>
+							</svg>
+						</a>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>
 
 	<style is:global>
+		@keyframes fade-in-down {
+			0% {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		
+		@keyframes pulse-slow {
+			0% {
+				box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+			}
+			70% {
+				box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+			}
+			100% {
+				box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+			}
+		}
+		
+		.animate-fade-in-down {
+			animation: fade-in-down 0.3s ease-out forwards;
+		}
+		
+		.animate-pulse-slow {
+			animation: pulse-slow 3s infinite;
+		}
+		
+		.animation-delay-1000 {
+			animation-delay: 1s;
+		}
+		
 		.dark #themeToggle .sun {
 			display: none;
 		}
@@ -146,20 +234,44 @@ const menu = [
 			display: block;
 		}
 		
-		/* Header scroll effect */
+		/* Enhanced Header scroll effect */
 		#site-header {
 			transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+			border-bottom: 1px solid rgba(99, 102, 241, 0.2);
 		}
 		
 		.scrolled #site-header {
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-			background-color: rgba(255, 255, 255, 0.95);
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			background-color: rgba(255, 255, 255, 0.98);
 			padding-top: 0.5rem;
 			padding-bottom: 0.5rem;
+			border-bottom: 1px solid rgba(99, 102, 241, 0.3);
 		}
 		
 		.dark .scrolled #site-header {
-			background-color: rgba(24, 24, 27, 0.95);
+			background-color: rgba(24, 24, 27, 0.98);
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+		}
+		
+		/* Enhanced hover effects for navigation */
+		#site-header nav ul li a {
+			position: relative;
+			overflow: hidden;
+		}
+		
+		#site-header nav ul li a::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+			transition: 0.5s;
+		}
+		
+		#site-header nav ul li a:hover::before {
+			left: 100%;
 		}
 	</style>
 
@@ -180,15 +292,15 @@ const menu = [
 				sendMessage({ setConfig: { theme: 'light' } });
 			}
 			
-			// Toggle moon/sun icons
-			const sunIcon = document.querySelector('#themeToggle .sun');
-			const moonIcon = document.querySelector('#themeToggle .moon');
-			if (sunIcon && moonIcon) {
-				sunIcon.classList.toggle('hidden');
-				moonIcon.classList.toggle('hidden');
-			}
+			// Toggle moon/sun icons for both desktop and mobile
+			const sunIcons = document.querySelectorAll('#themeToggle .sun, #mobile-themeToggle .sun');
+			const moonIcons = document.querySelectorAll('#themeToggle .moon, #mobile-themeToggle .moon');
+			sunIcons.forEach(icon => icon.classList.toggle('hidden'));
+			moonIcons.forEach(icon => icon.classList.toggle('hidden'));
 		};
+		
 		document.getElementById('themeToggle')?.addEventListener('click', handleToggleClick);
+		document.getElementById('mobile-themeToggle')?.addEventListener('click', handleToggleClick);
 		
 		// Mobile menu toggle
 		document.getElementById('menu-toggle')?.addEventListener('click', () => {

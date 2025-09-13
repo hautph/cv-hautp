@@ -1,0 +1,8 @@
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <rect width="50" height="50" rx="8" fill="#ff6a00"/>
+  <g transform="translate(15, 15)">
+    <path d="M0 0 L20 0 L10 10 L0 10 Z" fill="white"/>
+    <path d="M0 10 L10 10 L5 20 L0 20 Z" fill="white"/>
+  </g>
+  <text x="25" y="45" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="white" font-weight="bold">Alibaba</text>
+</svg>

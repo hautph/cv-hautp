@@ -1,0 +1,8 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <rect width="60" height="60" rx="10" fill="#2C3E50"/>
+  <g transform="translate(15, 15)">
+    <circle cx="15" cy="15" r="12" fill="white"/>
+    <text x="15" y="18" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#2C3E50" font-weight="bold">ZCCC</text>
+    <path d="M8 22 L22 22 L15 8 Z" fill="#2C3E50"/>
+  </g>
+</svg>

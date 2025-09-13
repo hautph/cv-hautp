@@ -1,0 +1,7 @@
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <rect width="50" height="50" rx="8" fill="#607078"/>
+  <g transform="translate(10, 15)">
+    <path d="M0 0 L30 0 L25 15 L5 15 Z" fill="white"/>
+    <path d="M5 15 L25 15 L20 25 L10 25 Z" fill="white"/>
+  </g>
+</svg>

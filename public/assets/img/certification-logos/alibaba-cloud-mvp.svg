@@ -1,0 +1,9 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <rect width="60" height="60" rx="10" fill="#ff6a00"/>
+  <g transform="translate(15, 15)">
+    <circle cx="15" cy="15" r="12" fill="white"/>
+    <path d="M15 8 L18 22 L12 22 Z" fill="#ff6a00"/>
+    <path d="M10 15 L20 15 L15 10 Z" fill="#ff6a00"/>
+  </g>
+  <text x="30" y="55" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="white" font-weight="bold">MVP</text>
+</svg>

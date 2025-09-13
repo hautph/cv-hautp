@@ -18,6 +18,190 @@ const { projects } = Astro.props;
 					<div class='absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0'></div>
 					
 					<div class='relative z-10'>
+						{/* Logo frame with AI-themed project logos */}
+						<div class='flex justify-center mb-4'>
+							<div class='w-16 h-16 rounded-lg border-2 border-gray-200 dark:border-zinc-700 flex items-center justify-center bg-white dark:bg-zinc-800 shadow-sm'>
+								{
+									(() => {
+										// AI-themed project logos
+										if (project.name.includes("Tran Dai Nghia")) {
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI Education Logo">
+													<rect width="48" height="48" fill="url(#aiGradient1)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#3b82f6"/>
+															<stop offset="100%" stop-color="#8b5cf6"/>
+														</linearGradient>
+													</defs>
+													{/* Neural network style elements */}
+													<circle cx="16" cy="16" r="3" fill="white"/>
+													<circle cx="32" cy="16" r="3" fill="white"/>
+													<circle cx="24" cy="24" r="3" fill="white"/>
+													<circle cx="16" cy="32" r="3" fill="white"/>
+													<circle cx="32" cy="32" r="3" fill="white"/>
+													{/* Connection lines */}
+													<line x1="16" y1="16" x2="32" y2="16" stroke="white" stroke-width="1" stroke-dasharray="2,2"/>
+													<line x1="16" y1="16" x2="24" y2="24" stroke="white" stroke-width="1" stroke-dasharray="2,2"/>
+													<line x1="32" y1="16" x2="24" y2="24" stroke="white" stroke-width="1" stroke-dasharray="2,2"/>
+													<line x1="24" y1="24" x2="16" y2="32" stroke="white" stroke-width="1" stroke-dasharray="2,2"/>
+													<line x1="24" y1="24" x2="32" y2="32" stroke="white" stroke-width="1" stroke-dasharray="2,2"/>
+													<line x1="16" y1="32" x2="32" y2="32" stroke="white" stroke-width="1" stroke-dasharray="2,2"/>
+													{/* Education icon */}
+													<path d="M15 36 L33 36 L30 42 L18 42 Z" fill="white"/>
+												</svg>
+											);
+										} else if (project.name.includes("Cung Nhau Hoc")) {
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI Learning Platform Logo">
+													<rect width="48" height="48" fill="url(#aiGradient2)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#10b981"/>
+															<stop offset="100%" stop-color="#0ea5e9"/>
+														</linearGradient>
+													</defs>
+													{/* Brain-like neural network */}
+													<path d="M24 15 Q28 12 32 15 Q35 18 32 21 Q35 24 32 27 Q28 30 24 27 Q20 30 16 27 Q13 24 16 21 Q13 18 16 15 Q20 12 24 15" fill="none" stroke="white" stroke-width="1.5"/>
+													{/* Connection points */}
+													<circle cx="24" cy="15" r="2" fill="white"/>
+													<circle cx="32" cy="15" r="2" fill="white"/>
+													<circle cx="16" cy="15" r="2" fill="white"/>
+													<circle cx="32" cy="27" r="2" fill="white"/>
+													<circle cx="16" cy="27" r="2" fill="white"/>
+													<circle cx="24" cy="27" r="2" fill="white"/>
+													{/* Learning icon */}
+													<path d="M20 34 L28 34 L26 38 L22 38 Z" fill="white"/>
+												</svg>
+											);
+										} else if (project.name.includes("Vinahost") && project.name.includes("Support")) {
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI Support Portal Logo">
+													<rect width="48" height="48" fill="url(#aiGradient3)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#8b5cf6"/>
+															<stop offset="100%" stop-color="#ec4899"/>
+														</linearGradient>
+													</defs>
+													{/* Support/headset icon with AI elements */}
+													<path d="M24 15 C26 15 28 17 28 19 C28 21 26 23 24 23 C22 23 20 21 20 19 C20 17 22 15 24 15 Z" fill="white"/>
+													<path d="M20 23 Q18 25 18 28 L18 32 Q18 34 20 34 L28 34 Q30 34 30 32 L30 28 Q30 25 28 23" fill="none" stroke="white" stroke-width="2"/>
+													{/* Neural connections */}
+													<circle cx="15" cy="20" r="1.5" fill="white"/>
+													<circle cx="33" cy="20" r="1.5" fill="white"/>
+													<line x1="18" y1="22" x2="15" y2="20" stroke="white" stroke-width="1"/>
+													<line x1="30" y1="22" x2="33" y2="20" stroke="white" stroke-width="1"/>
+												</svg>
+											);
+										} else if (project.name.includes("Vinahost") && project.name.includes("DevOps")) {
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI DevOps Logo">
+													<rect width="48" height="48" fill="url(#aiGradient4)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#f59e0b"/>
+															<stop offset="100%" stop-color="#ef4444"/>
+														</linearGradient>
+													</defs>
+													{/* Gear with neural connections */}
+													<circle cx="24" cy="24" r="8" fill="none" stroke="white" stroke-width="2"/>
+													<circle cx="24" cy="24" r="3" fill="white"/>
+													{/* Gear teeth */}
+													<rect x="23" y="12" width="2" height="5" fill="white"/>
+													<rect x="23" y="31" width="2" height="5" fill="white"/>
+													<rect x="12" y="23" width="5" height="2" fill="white"/>
+													<rect x="31" y="23" width="5" height="2" fill="white"/>
+													{/* AI circuit connections */}
+													<circle cx="12" cy="12" r="2" fill="white"/>
+													<circle cx="36" cy="12" r="2" fill="white"/>
+													<circle cx="12" cy="36" r="2" fill="white"/>
+													<circle cx="36" cy="36" r="2" fill="white"/>
+													<line x1="14" y1="12" x2="22" y2="12" stroke="white" stroke-width="1"/>
+													<line x1="26" y1="12" x2="34" y2="12" stroke="white" stroke-width="1"/>
+													<line x1="12" y1="14" x2="12" y2="22" stroke="white" stroke-width="1"/>
+													<line x1="12" y1="26" x2="12" y2="34" stroke="white" stroke-width="1"/>
+												</svg>
+											);
+										} else if (project.name.includes("IT Tools")) {
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI Tools Logo">
+													<rect width="48" height="48" fill="url(#aiGradient5)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#ef4444"/>
+															<stop offset="100%" stop-color="#f59e0b"/>
+														</linearGradient>
+													</defs>
+													{/* Circuit board style */}
+													<rect x="12" y="12" width="24" height="24" rx="2" fill="none" stroke="white" stroke-width="1" stroke-dasharray="3,3"/>
+													{/* Circuit elements */}
+													<circle cx="18" cy="18" r="2" fill="white"/>
+													<circle cx="30" cy="18" r="2" fill="white"/>
+													<circle cx="18" cy="30" r="2" fill="white"/>
+													<circle cx="30" cy="30" r="2" fill="white"/>
+													<rect x="22" y="22" width="4" height="4" fill="white"/>
+													{/* AI connections */}
+													<line x1="18" y1="20" x2="18" y2="28" stroke="white" stroke-width="1"/>
+													<line x1="30" y1="20" x2="30" y2="28" stroke="white" stroke-width="1"/>
+													<line x1="20" y1="18" x2="28" y2="18" stroke="white" stroke-width="1"/>
+													<line x1="20" y1="30" x2="28" y2="30" stroke="white" stroke-width="1"/>
+												</svg>
+											);
+										} else if (project.name.includes("Alibaba Cloud")) {
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI Cloud Computing Logo">
+													<rect width="48" height="48" fill="url(#aiGradient6)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#0ea5e9"/>
+															<stop offset="100%" stop-color="#06b6d4"/>
+														</linearGradient>
+													</defs>
+													{/* Cloud with AI elements */}
+													<path d="M15 25 Q20 20 25 22 Q30 20 35 25 Q33 30 25 32 Q17 30 15 25" fill="white"/>
+													{/* Neural network inside cloud */}
+													<circle cx="22" cy="25" r="1.5" fill="#0ea5e9"/>
+													<circle cx="26" cy="23" r="1.5" fill="#0ea5e9"/>
+													<circle cx="28" cy="27" r="1.5" fill="#0ea5e9"/>
+													<circle cx="24" cy="29" r="1.5" fill="#0ea5e9"/>
+													<line x1="22" y1="25" x2="26" y2="23" stroke="#0ea5e9" stroke-width="1"/>
+													<line x1="26" y1="23" x2="28" y2="27" stroke="#0ea5e9" stroke-width="1"/>
+													<line x1="28" y1="27" x2="24" y2="29" stroke="#0ea5e9" stroke-width="1"/>
+													<line x1="24" y1="29" x2="22" y2="25" stroke="#0ea5e9" stroke-width="1"/>
+												</svg>
+											);
+										} else {
+											// Default AI-themed logo
+											return (
+												<svg width="48" height="48" viewBox="0 0 48 48" class="object-contain" aria-label="AI Project Logo">
+													<rect width="48" height="48" fill="url(#aiGradientDefault)" rx="8"/>
+													<defs>
+														<linearGradient id="aiGradientDefault" x1="0%" y1="0%" x2="100%" y2="100%">
+															<stop offset="0%" stop-color="#6366f1"/>
+															<stop offset="100%" stop-color="#8b5cf6"/>
+														</linearGradient>
+													</defs>
+													{/* Abstract AI symbol */}
+													<circle cx="24" cy="20" r="5" fill="white"/>
+													<path d="M18 26 L30 26 L24 34 Z" fill="white"/>
+													{/* Connection lines */}
+													<line x1="15" y1="15" x2="24" y2="20" stroke="white" stroke-width="1"/>
+													<line x1="33" y1="15" x2="24" y2="20" stroke="white" stroke-width="1"/>
+													<line x1="15" y1="33" x2="18" y2="26" stroke="white" stroke-width="1"/>
+													<line x1="33" y1="33" x2="30" y2="26" stroke="white" stroke-width="1"/>
+													<circle cx="15" cy="15" r="2" fill="white"/>
+													<circle cx="33" cy="15" r="2" fill="white"/>
+													<circle cx="15" cy="33" r="2" fill="white"/>
+													<circle cx="33" cy="33" r="2" fill="white"/>
+												</svg>
+											);
+										}
+									})()
+								}
+							</div>
+						</div>
+						
 						<div class='flex items-center justify-between my-2'>
 							<h3 class='font-semibold'>
 								<a class='underline hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-300' href={project.demoLink} target='_blank' rel={project.demoLinkRel}>
