@@ -35,6 +35,7 @@ If you encounter any bugs, have questions, or want to suggest new features, plea
    git clone https://github.com/hautph/cv-hautp.git
    cd website
    ```
+npm install astro
 
 2. **Install dependencies:**
 
